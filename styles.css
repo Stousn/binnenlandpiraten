@@ -840,6 +840,71 @@ a:focus-visible {
     margin: 0;
 }
 
+/* Event-Einträge (Konzerte & Festivals)
+   ========================================================================== */
+.event .timeline-content > * + * {
+    margin-top: 0.3rem;
+}
+
+.event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--primary);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+}
+
+.event-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    color: #000;
+    background: var(--primary);
+}
+
+.event-badge-alt {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+/* Farbwechsel des Timeline-Punkts für Festivals */
+.timeline .event-festival::before {
+    background: var(--accent);
+}
+
+.event-tour {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.event-venue {
+    color: var(--text-muted);
+}
+
+.event-venue::before {
+    content: '📍 ';
+    margin-right: 0.15rem;
+}
+
+.event-line {
+    color: var(--text-muted);
+}
+
+.event-label {
+    color: var(--text);
+    font-weight: 600;
+    margin-right: 0.15rem;
+}
+
 /* Kompakte Timeline (innerhalb eines Jahr-Accordions) */
 .timeline-compact::before {
     left: 0.5rem;
