@@ -198,6 +198,76 @@
             "venue": "Simm City, Wien",
             "support": ["Sonata Arctica", "Frozen Crown"],
             "desc": "Beast In Black kommen mit ihrer Resurrection Tour 2026 als Release Tour für ihr 4. Studioalbum nach Wien. Special Guests ist Sonata Arctica und Frozen Crown ist Opener."
+        },
+        {
+            "datetime": "2026-11-03",
+            "dateDisplay": "03.11.2026",
+            "type": "concert",
+            "title": "Amon Amarth",
+            "tour": "tba",
+            "venue": "Gasometer, Wien",
+            "support": ["tba"],
+            "desc": "tba"
+        },
+        {
+            "datetime": "2026-11-06",
+            "dateDisplay": "06.11.2026",
+            "type": "concert",
+            "title": "In Extremo",
+            "tour": "tba",
+            "venue": "Globe, Wien",
+            "support": ["tba"],
+            "desc": "tba"
+        },
+        {
+            "datetime": "2026-11-10",
+            "dateDisplay": "10.11.2026",
+            "type": "concert",
+            "title": "Gloryhammer",
+            "tour": "tba",
+            "venue": "Arena, Wien",
+            "support": ["tba"],
+            "desc": "tba"
+        },
+        {
+            "datetime": "2026-11-25",
+            "dateDisplay": "25.11.2026",
+            "type": "concert",
+            "title": "Eluveitie",
+            "tour": "tba",
+            "venue": "Arena, Wien",
+            "support": ["tba"],
+            "desc": "tba"
+        },
+        {
+            "datetime": "2026-12-02",
+            "dateDisplay": "02.12.2026",
+            "type": "concert",
+            "title": "Dominum",
+            "tour": "tba",
+            "venue": "Szene, Wien",
+            "support": ["tba"],
+            "desc": "tba"
+        },
+        {
+            "datetime": "2026-12-04",
+            "dateDisplay": "04.12.2026",
+            "type": "concert",
+            "title": "Accept",
+            "tour": "tba",
+            "venue": "Gasometer, Wien",
+            "support": ["tba"],
+            "desc": "tba"
+        },
+        {
+            "datetime": "2026-12-05",
+            "dateDisplay": "05.12.2026",
+            "type": "concert",
+            "title": "dArtagnan",
+            "tour": "tba",
+            "venue": "Gasometer, Wien",
+            "support": ["tba"],
+            "desc": "tba"
         }
     ]
 }
