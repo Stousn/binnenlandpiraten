@@ -1,0 +1,203 @@
+{
+    "events": [
+        {
+            "datetime": "2026-01-20",
+            "dateDisplay": "20.01.2026",
+            "type": "festival",
+            "title": "Trollfest",
+            "badge": "Festival",
+            "headliner": ["Korpiklaani"],
+            "venue": "Ottakringer Brauerei, Wien",
+            "lineup": ["Finntroll", "Heidevolk", "Trollfest"]
+        },
+        {
+            "datetime": "2026-02-27",
+            "dateDisplay": "27.02.2026",
+            "type": "concert",
+            "title": "Edenbridge",
+            "tour": "Set The Dark On Fire – Live in Europa",
+            "venue": "Szene Wien",
+            "support": ["FreetoFly", "G.O.D"]
+        },
+        {
+            "datetime": "2026-03-04",
+            "dateDisplay": "04.03.2026",
+            "type": "concert",
+            "title": "Avatar",
+            "tour": "In The Airwaves EU \u201926",
+            "venue": "Gasometer, Wien",
+            "support": ["Alien Weaponry", "Witch Club Satan"]
+        },
+        {
+            "datetime": "2026-03-06",
+            "dateDisplay": "06.03.2026",
+            "type": "concert",
+            "title": "Warkings & Visions Of Atlantis",
+            "badge": "Co-Headliner",
+            "badgeAlt": true,
+            "tour": "Pirates & Kings Over Europe 2026",
+            "venue": "SiMM City, Wien",
+            "support": ["Induction"]
+        },
+        {
+            "datetime": "2026-03-07",
+            "dateDisplay": "07.03.2026",
+            "type": "concert",
+            "title": "Versengold",
+            "tour": "Eingenordet Tour 2026",
+            "venue": "Gasometer, Wien",
+            "support": ["Kupfergold"]
+        },
+        {
+            "datetime": "2026-03-18",
+            "dateDisplay": "18.03.2026",
+            "type": "concert",
+            "title": "Amaranthe & Epica",
+            "badge": "Co-Headliner",
+            "badgeAlt": true,
+            "tour": "Arcane Dimensions Tour 2026",
+            "venue": "Gasometer, Wien",
+            "support": ["Charlotte Wessels – The Obsession"]
+        },
+        {
+            "datetime": "2026-03-20",
+            "dateDisplay": "20.03.2026",
+            "type": "concert",
+            "title": "Manntra",
+            "tour": "Titans Tour 2026",
+            "venue": "Viper Room, Wien",
+            "support": ["Wisborg"]
+        },
+        {
+            "datetime": "2026-03-26",
+            "dateDisplay": "26.03.2026",
+            "type": "concert",
+            "title": "Feuerschwanz",
+            "tour": "Knightclub Tour 2026",
+            "venue": "Gasometer, Wien",
+            "support": ["Miracle Of Sound"]
+        },
+        {
+            "datetime": "2026-04-18",
+            "dateDisplay": "18.04.2026",
+            "type": "festival",
+            "title": "W:O:A 2026 Warm Up Party VIENNA",
+            "badge": "Festival",
+            "headliner": ["Nanowar Of Steel"],
+            "venue": "Szene Wien",
+            "lineup": ["Chaos Inside", "Bloody Holly And The Ricketz"]
+        },
+        {
+            "datetime": "2026-04-19",
+            "dateDisplay": "19.04.2026",
+            "type": "concert",
+            "title": "Victorius",
+            "tour": "Tour Of The Strong 2026",
+            "venue": "Viper Room, Wien",
+            "support": ["Terra Atlantica", "Aeon Gods"]
+        },
+        {
+            "datetime": "2026-06-09",
+            "dateDisplay": "09.06.2026",
+            "type": "concert",
+            "title": "Linkin Park",
+            "tour": "From Zero World Tour",
+            "venue": "Ernst-Happel-Stadion, Wien",
+            "support": ["Clipse", "Phantogram"]
+        },
+        {
+            "datetime": "2026-06-14",
+            "dateDisplay": "14.06.2026",
+            "type": "festival",
+            "title": "Ferrara Summer Festival 2026",
+            "badge": "Festival",
+            "headliner": ["Megadeth", "Anthrax (Co-Headliner)"],
+            "venue": "Piazza Ariostea, Ferrara (IT)",
+            "lineup": ["Black Label Society", "Cavalera", "Gaerea", "Game Over"]
+        },
+        {
+            "datetime": "2026-07-03",
+            "dateDisplay": "03.–05.07.2026",
+            "type": "festival",
+            "title": "Donauinselfest 2026",
+            "badge": "Festival",
+            "headliner": ["Avatar", "Airbourne", "Feuerschwanz"],
+            "venue": "88.6 Rockbühne, Donauinsel, Wien",
+            "lineup": [
+                "Bloodsucking Zombies From Outer Space",
+                "Nanowar Of Steel",
+                "Mr. Hurley & die Pulveraffen",
+                "The Devastation",
+                "Black Sunzet",
+                "Venice Blue",
+                "Coffeeshock Company",
+                "Zascha",
+                "Tailgunner"
+            ]
+        },
+        {
+            "datetime": "2026-07-16",
+            "dateDisplay": "16.–18.07.2026",
+            "type": "festival",
+            "title": "Area 53 Festival 2026",
+            "badge": "Festival",
+            "headliner": ["Saxon", "Arch Enemy", "In Flames"],
+            "venue": "VAZ Schladnitz, Leoben",
+            "lineup": [
+                "Cavalera",
+                "Visions Of Atlantis",
+                "Hiraes",
+                "Dirkschneider",
+                "Self Deception",
+                "Voivod",
+                "The Devastation",
+                "Pain",
+                "Bleed From Within",
+                "Ad Infinium",
+                "Vinegar Hill",
+                "Never Obey Again",
+                "Frühschoppen mit Jazz Gitti u.v.m."
+            ]
+        },
+        {
+            "datetime": "2026-08-29",
+            "dateDisplay": "29.08.2026",
+            "type": "festival",
+            "title": "Metal on the Hill Festival 2026",
+            "badge": "Festival",
+            "headliner": ["Alestorm"],
+            "venue": "Schlossbergbühne Kasematten, Graz",
+            "lineup": ["Soulfly", "Burning Witches", "Tabernis", "Veins Of Suffering", "Matter Of Taste"]
+        },
+        {
+            "datetime": "2026-10-02",
+            "dateDisplay": "02.10.2026",
+            "type": "concert",
+            "title": "Subway To Sally",
+            "tour": "Post Mortem 2026 Tour",
+            "venue": "Simm City, Wien",
+            "support": ["Storm Seeker"],
+            "desc": "Subway To Sally kommen mit ihrer Post Mortem 2026 Tour nach Wien um ihr gleichnamiges Album zu präsentieren. Supported werden sie von den Piraten von Storm Seeker."
+        },
+        {
+            "datetime": "2026-10-10",
+            "dateDisplay": "10.10.2026",
+            "type": "festival",
+            "title": "Black Unicorn Festival 2026",
+            "badge": "Festival",
+            "headliner": ["Dragony", "Temperance"],
+            "venue": "OHO, Oberwart",
+            "lineup": ["Shores Of Lunacy", "Ghidrah", "Fearancy"]
+        },
+        {
+            "datetime": "2026-10-31",
+            "dateDisplay": "31.10.2026",
+            "type": "concert",
+            "title": "Beast In Black",
+            "tour": " Resurrection Tour 2026",
+            "venue": "Simm City, Wien",
+            "support": ["Sonata Arctica", "Frozen Crown"],
+            "desc": "Beast In Black kommen mit ihrer Resurrection Tour 2026 als Release Tour für ihr 4. Studioalbum nach Wien. Special Guests ist Sonata Arctica und Frozen Crown ist Opener."
+        }
+    ]
+}
