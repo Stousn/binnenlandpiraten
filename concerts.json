@@ -204,70 +204,69 @@
             "dateDisplay": "03.11.2026",
             "type": "concert",
             "title": "Amon Amarth",
-            "tour": "tba",
+            "tour": "The Allfather Awakens: Europe & UK 2026. A New Record Awaits...",
             "venue": "Gasometer, Wien",
-            "support": ["tba"],
-            "desc": "tba"
+            "support": ["Orbit Culture", "Soilwork"],
+            "desc": "Amon Amarth entfesseln 2026 ihre bislang aufwendigste Headline-Show und bringen die „The Allfather Awakens“-Tour nach Europa. Unterstützt von Orbit Culture und Soilwork erwartet die Besucher ein Abend voller epischer Hymnen, Feuer und nordischer Metal-Power."
         },
         {
             "datetime": "2026-11-06",
             "dateDisplay": "06.11.2026",
             "type": "concert",
             "title": "In Extremo",
-            "tour": "tba",
+            "tour": "Tranquilo II - Akustik Tour 2026",
             "venue": "Globe, Wien",
-            "support": ["tba"],
-            "desc": "tba"
+            "desc": "In Extremo bringen mit \"Tranquilo II\" ihre einzigartige Mischung aus Mittelalterklängen und Rock in einem intimen Akustikformat auf die Bühne. Begleitet von hochkarätigen Gastmusikern erwartet das Publikum ein außergewöhnlicher Abend voller Atmosphäre, Emotionen und neu interpretierter Klassiker."
         },
         {
             "datetime": "2026-11-10",
             "dateDisplay": "10.11.2026",
             "type": "concert",
             "title": "Gloryhammer",
-            "tour": "tba",
+            "tour": "5th Album Release Tour 2026",
             "venue": "Arena, Wien",
-            "support": ["tba"],
-            "desc": "tba"
+            "support": ["Majestica", "Arion"],
+            "desc": "Gloryhammer bringen ihre 5th Album Release Tour 2026 auf die Bühne und feiern ihr neues Album \"LEGENDS FROM BEYOND THE GALACTIC TERRORVORTEX\" mit einer spektakulären Power-Metal-Show voller epischer Geschichten, galaktischer Schlachten und mitreißender Hymnen. Gemeinsam mit Majestica und Arion erwartet das Publikum ein Abend voller Fantasy, Humor und heroischer Metal-Energie."
         },
         {
             "datetime": "2026-11-25",
             "dateDisplay": "25.11.2026",
             "type": "concert",
             "title": "Eluveitie",
-            "tour": "tba",
+            "tour": "ÀNV Rising - Europe Pt. III",
             "venue": "Arena, Wien",
-            "support": ["tba"],
-            "desc": "tba"
+            "support": ["Pain", "Wolfheart"],
+            "desc": "Mit der „ÀNV Rising Europe Tour“ entführen Eluveitie ihr Publikum in eine Welt voller keltischer Legenden, Spiritualität und moderner Metal-Power. Die Schweizer Folk-Metal-Pioniere präsentieren dabei neben ihren Klassikern auch neue Songs ihres ambitionierten Albums ÀNV."
         },
         {
             "datetime": "2026-12-02",
             "dateDisplay": "02.12.2026",
             "type": "concert",
             "title": "Dominum",
-            "tour": "tba",
+            "tour": "Night Is Calling Tour 2026",
             "venue": "Szene, Wien",
-            "support": ["tba"],
-            "desc": "tba"
+            "support": ["The Night Flight Orechstra", "Edge Of Paradise"],
+            "desc": "Die erste Headliner-Tour bringt Dominum auch nach Wien. Die Metal Zombies rund um Dr. Dead stellen mit einer neuen epischen Show ihr gleichnamiges Album vor. Mit dabei ist The Night Flight Orechstra und Edge Of Paradise"
         },
         {
             "datetime": "2026-12-04",
             "dateDisplay": "04.12.2026",
             "type": "concert",
             "title": "Accept",
-            "tour": "tba",
+            "tour": "50th Anniversary Tour 1976–2026",
             "venue": "Gasometer, Wien",
-            "support": ["tba"],
-            "desc": "tba"
+            "support": ["Dynazty", "Tailgunner"],
+            "desc": "Accept feiern ihr 50-jähriges Bestehen mit einer besonderen Jubiläumstour. Die deutschen Heavy-Metal-Legenden präsentieren ihre größten Hits und Klassiker aus fünf Jahrzehnten Bandgeschichte, unterstützt von Dynazty und Tailgunner."
         },
         {
             "datetime": "2026-12-05",
             "dateDisplay": "05.12.2026",
             "type": "concert",
             "title": "dArtagnan",
-            "tour": "tba",
+            "tour": "Helden & Hymnen – Die Jubiläumstour 2026 (10 Jahre dArtagnan)",
             "venue": "Gasometer, Wien",
-            "support": ["tba"],
-            "desc": "tba"
+            "support": ["Storm Seeker", "Doppelbock"],
+            "desc": "Anlässlich ihres zehnjährigen Bestehens gehen dArtagnan auf die \"Helden & Hymnen\"-Jubiläumstour. Die Band entführt ihr Publikum in eine Welt voller mitreißender Folk-Rock-Hymnen, unterstützt von Storm Seeker und Doppelbock."
         }
     ]
 }
