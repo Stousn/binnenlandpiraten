@@ -1,6 +1,230 @@
 {
     "events": [
         {
+            "datetime": "2025-01-29",
+            "dateDisplay": "29.01.2025",
+            "type": "concert",
+            "title": "Papa Roach",
+            "tour": "Rise of the Roach Tour 2025",
+            "venue": "Stadthalle, Wien",
+            "support": ["Wage War"]
+        },
+        {
+            "datetime": "2025-02-21",
+            "dateDisplay": "21.02.2025",
+            "type": "concert",
+            "title": "Dynazty & Nanowar Of Steel",
+            "tour": "European Tour 2025",
+            "badge": "Co-Headliner",
+            "badgeAlt": true,
+            "venue": "SiMM City, Wien",
+            "support": ["Kilmara"]
+        },
+        {
+            "datetime": "2025-03-27",
+            "dateDisplay": "27.03.2025",
+            "type": "concert",
+            "title": "Dartagnan",
+            "tour": "Herzblut Tour 2025",
+            "venue": "SiMM City, Wien",
+            "support": ["Manntra", "Storm Seeker"]
+        },
+        {
+            "datetime": "2025-04-02",
+            "dateDisplay": "02.04.2025",
+            "type": "concert",
+            "title": "Avantasia",
+            "tour": "Here Be Dragons Tour 2025",
+            "venue": "Gasometer, Wien"
+        },
+        {
+            "datetime": "2025-04-24",
+            "dateDisplay": "24.04.2025",
+            "type": "concert",
+            "title": "Ghost",
+            "tour": "Skeletour World Tour 2025",
+            "venue": "Olympiahalle, München, DE"
+        },
+        {
+            "datetime": "2025-06-17",
+            "dateDisplay": "17.06.2025",
+            "type": "concert",
+            "title": "Green Day",
+            "tour": "Saviors Tour",
+            "venue": "Stadthalle, Wien",
+            "support": ["Wunderhorse"]
+        },
+        {
+            "datetime": "2025-07-10",
+            "dateDisplay": "10.–12.07.2025",
+            "type": "festival",
+            "title": "Area 53 Festival 2025",
+            "badge": "Festival",
+            "headliner": ["W.A.S.P.", "Gloryhammer", "Battle Beast"],
+            "venue": "VAZ Schladnitz, Leoben",
+            "lineup": [
+                "Dartagnan",
+                "Warkings",
+                "Evil Invaders",
+                "Lordi",
+                "Phil Campbell & The Bastard Sons",
+                "Varg",
+                "Tailgunners",
+                "Korpiklaani",
+                "Kanonenfieber",
+                "Unleash The Archers",
+                "Steve'n'Seagulls",
+                "Frühschoppen mit Jazz Gitti u.v.m."
+            ]
+        },
+        {
+            "datetime": "2025-07-17",
+            "dateDisplay": "17.07.2025",
+            "type": "concert",
+            "title": "Iron Maiden",
+            "tour": "Run For Your Lives World Tour",
+            "venue": "Ernst Happel Stadion, Wien",
+            "support": ["Avatar"]
+        },
+        {
+            "datetime": "2025-07-25",
+            "dateDisplay": "25.07.2025",
+            "type": "concert",
+            "title": "In Extremo",
+            "tour": "Die Verrückten sind wieder in der Stadt - Sommer 2025",
+            "venue": "Kasematten, Graz",
+            "support": ["Dominum"]
+        },
+        {
+            "datetime": "2025-09-18",
+            "dateDisplay": "18.09.2025",
+            "type": "concert",
+            "title": "Storm Seeker",
+            "tour": "Set The Sails Tour 2025",
+            "venue": "Szene, Wien"
+        },
+        {
+            "datetime": "2025-10-20",
+            "dateDisplay": "20.10.2025",
+            "type": "concert",
+            "title": "Wind Rose",
+            "tour": "Tourslayer Europe 2025",
+            "venue": "Arena, Wien",
+            "support": ["Orden Ogan", "Angus McSix"]
+        },
+        {
+            "datetime": "2025-10-24",
+            "dateDisplay": "24.10.2025",
+            "type": "concert",
+            "title": "The Offspring",
+            "tour": "Supercharged Worldwide in '25",
+            "venue": "TipsArena, Linz",
+            "support": ["Simple Plan"]
+        },
+        {
+            "datetime": "2025-10-25",
+            "dateDisplay": "25.10.2025",
+            "type": "concert",
+            "title": "All Four Metal & Grailknights",
+            "tour": "Battle of Metal Tour 2025",
+            "badge": "Co-Headliner",
+            "badgeAlt": true,
+            "venue": "Viper Room, Wien",
+            "support": ["Tungsten"]
+        },
+        {
+            "datetime": "2025-10-30",
+            "dateDisplay": "30.10.2025",
+            "type": "concert",
+            "title": "Ad Infinitum",
+            "tour": "Into the Abyss Tour 2025",
+            "venue": "Szene, Wien",
+            "support": ["Seven Spires", "Tulip"]
+        },
+        {
+            "datetime": "2025-11-06",
+            "dateDisplay": "06.11.2025",
+            "type": "concert",
+            "title": "Saltatio Mortis",
+            "tour": "Weltenwanderer Tour 2025",
+            "venue": "Gasometer, Wien",
+            "support": ["Bad Loverz"]
+        },
+        {
+            "datetime": "2025-11-08",
+            "dateDisplay": "08.11.2025",
+            "type": "concert",
+            "title": "Dragony & Autumn Bride",
+            "tour": "Autumn Bride & Dragony Co-Headliner Shows 2025",
+            "badge": "Co-Headliner",
+            "badgeAlt": true,
+            "venue": "Explosiv, Graz",
+            "support": ["Ebony Archways"]
+        },
+        {
+            "datetime": "2025-11-15",
+            "dateDisplay": "15.11.2025",
+            "type": "concert",
+            "title": "Mr. Hurley & Die Pulveraffen",
+            "tour": "S.O.S Tour 2025/2026",
+            "venue": "SiMM City, Wien",
+            "support": ["Vogelfrey", "MacPiet"]
+        },
+        {
+            "datetime": "2025-11-16",
+            "dateDisplay": "16.11.2025",
+            "type": "concert",
+            "title": "The Rasmus",
+            "tour": "weirdo tour 2025",
+            "venue": "SiMM City, Wien",
+            "support": ["The Funeral Portrait", "Block Of Flats"]
+        },
+        {
+            "datetime": "2025-11-16",
+            "dateDisplay": "16.11.2025",
+            "type": "concert",
+            "title": "The Rasmus",
+            "tour": "weirdo tour 2025",
+            "venue": "SiMM City, Wien",
+            "support": ["The Funeral Portrait", "Block Of Flats"]
+        },
+        {
+            "datetime": "2025-11-21",
+            "dateDisplay": "21.11.2025",
+            "type": "concert",
+            "title": "Sabaton",
+            "tour": "The Legendary Tour 2025",
+            "venue": "Stadthalle, Wien",
+            "support": ["The Legendary Orchestra"]
+        },
+        {
+            "datetime": "2025-11-27",
+            "dateDisplay": "27.11.2025",
+            "type": "concert",
+            "title": "Alestorm",
+            "tour": "Thunderfisting Europe 2025",
+            "venue": "Arena, Wien",
+            "support": ["Lutharo"]
+        },
+        {
+            "datetime": "2025-11-30",
+            "dateDisplay": "30.11.2025",
+            "type": "concert",
+            "title": "Battle Beast",
+            "tour": "Europe Tour 2025",
+            "venue": "Arena, Wien",
+            "support": ["Majestica", "Dominum"]
+        },
+        {
+            "datetime": "2025-12-07",
+            "dateDisplay": "07.12.2025",
+            "type": "concert",
+            "title": "Dartagnan",
+            "tour": "Herzblut Tour 2025",
+            "venue": "Orpheum, Graz",
+            "support": ["Manntra"]
+        },
+        {
             "datetime": "2026-01-20",
             "dateDisplay": "20.01.2026",
             "type": "festival",
