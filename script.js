@@ -76,7 +76,7 @@
     };
 
     const closeModal = (modal) => {
-        if (!modal) return;
+        if (!modal || modal.hidden) return;
         modal.hidden = true;
         modal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('modal-open');
@@ -84,7 +84,11 @@
         if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
             lastFocusedElement.focus();
         }
+        modal.dispatchEvent(new CustomEvent('modal:close'));
     };
+
+    // Für den Event-Bereich (separater Scope)
+    window.bpModal = { open: openModal, close: closeModal };
 
     // Öffner
     document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
@@ -209,12 +213,132 @@
         return nodes;
     };
 
+    /* ------------------------------------------------------------------
+       Detail-Ansicht (Modal, teilbar per ?event=<id>)
+       ------------------------------------------------------------------ */
+    const eventModal = document.getElementById('modal-event');
+    const eventModalTitle = document.getElementById('modal-event-title');
+    const eventModalBody = document.getElementById('modal-event-body');
+
+    // id -> Event; nur vergangene Events mit id haben eine Detail-Ansicht
+    const detailEvents = new Map();
+
+    const eventUrl = (id) => `?event=${encodeURIComponent(id)}`;
+    const getEventParam = () => new URLSearchParams(window.location.search).get('event');
+
+    const buildPhotos = (photos) => {
+        const list = el('ul', 'event-photos');
+        list.setAttribute('role', 'list');
+        photos.forEach((photo) => {
+            const li = el('li', 'event-photo');
+            if (photo.src) {
+                const img = document.createElement('img');
+                img.src = photo.src;
+                img.alt = photo.alt || '';
+                img.loading = 'lazy';
+                li.appendChild(img);
+            } else {
+                const placeholder = el('div', 'event-photo-placeholder');
+                placeholder.setAttribute('role', 'img');
+                placeholder.setAttribute('aria-label', photo.alt || 'Foto-Platzhalter');
+                placeholder.appendChild(el('span', null, '📷')).setAttribute('aria-hidden', 'true');
+                li.appendChild(placeholder);
+            }
+            list.appendChild(li);
+        });
+        return list;
+    };
+
+    const showEventDetail = (event, push) => {
+        if (!eventModal || !window.bpModal) return;
+
+        eventModal.dataset.eventId = event.id;
+        eventModalTitle.textContent = event.title;
+        eventModalBody.innerHTML = '';
+        eventModalBody.appendChild(buildMeta(event));
+        buildEventDetails(event).forEach((node) => eventModalBody.appendChild(node));
+
+        const photosSection = el('section', 'event-photos-section');
+        photosSection.appendChild(el('h3', null, 'Fotos'));
+        const photosHolder = el('div');
+        photosHolder.appendChild(el('p', 'note', 'Lade Fotos…'));
+        photosSection.appendChild(photosHolder);
+        eventModalBody.appendChild(photosSection);
+
+        window.bpModal.open(eventModal);
+        if (push) history.pushState({ bpEvent: event.id }, '', eventUrl(event.id));
+
+        fetch(`events/${encodeURIComponent(event.id)}.json`)
+            .then((response) => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+            })
+            .then((detail) => {
+                if (eventModal.dataset.eventId !== event.id) return;
+                photosHolder.innerHTML = '';
+                const photos = Array.isArray(detail.photos) ? detail.photos : [];
+                photosHolder.appendChild(photos.length ? buildPhotos(photos) : el('p', 'note', 'Keine Fotos vorhanden.'));
+            })
+            .catch(() => {
+                if (eventModal.dataset.eventId !== event.id) return;
+                photosHolder.innerHTML = '';
+                photosHolder.appendChild(el('p', 'note', 'Fotos konnten nicht geladen werden.'));
+            });
+    };
+
+    const showEventNotFound = () => {
+        if (!eventModal || !window.bpModal) return;
+        eventModal.dataset.eventId = '';
+        eventModalTitle.textContent = 'Event nicht gefunden';
+        eventModalBody.innerHTML = '';
+        eventModalBody.appendChild(el('p', 'note', 'Zu diesem Link gibt es keine Detail-Ansicht.'));
+        window.bpModal.open(eventModal);
+    };
+
+    // Öffnet bzw. schließt das Modal passend zur aktuellen URL
+    const syncModalWithUrl = () => {
+        if (!eventModal || !window.bpModal) return;
+        const id = getEventParam();
+        if (!id) {
+            window.bpModal.close(eventModal);
+            return;
+        }
+        const event = detailEvents.get(id);
+        if (event) showEventDetail(event, false);
+        else showEventNotFound();
+    };
+
+    if (eventModal) {
+        eventModal.addEventListener('modal:close', () => {
+            if (!getEventParam()) return;
+            if (history.state && history.state.bpEvent) {
+                history.back();
+            } else {
+                history.replaceState(null, '', window.location.pathname + window.location.hash);
+            }
+        });
+        window.addEventListener('popstate', syncModalWithUrl);
+    }
+
     const buildTimelineItem = (event) => {
         const li = el('li', `event ${event.type === 'festival' ? 'event-festival' : 'event-concert'}`);
         const content = el('div', 'timeline-content');
         content.appendChild(buildMeta(event));
         content.appendChild(el('h3', null, event.title));
         buildEventDetails(event).forEach((node) => content.appendChild(node));
+
+        if (detailEvents.has(event.id)) {
+            const link = el('a', 'event-details-link', 'Details ansehen');
+            link.href = eventUrl(event.id);
+            link.setAttribute('aria-label', `Details zu ${event.title} ansehen`);
+            link.addEventListener('click', (e) => {
+                if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                e.preventDefault();
+                showEventDetail(event, true);
+            });
+            content.appendChild(link);
+        }
+
         li.appendChild(content);
         return li;
     };
@@ -321,8 +445,12 @@
         .then((data) => {
             const events = Array.isArray(data.events) ? data.events : [];
             const today = getStartOfToday();
+            events.forEach((event) => {
+                if (event.id && parseISODate(event.datetime) < today) detailEvents.set(event.id, event);
+            });
             renderUpcomingEvent(events, today);
             renderPastEvents(events, today);
+            if (getEventParam()) syncModalWithUrl();
         })
         .catch(() => {
             const errorMsg = 'Events konnten nicht geladen werden.';

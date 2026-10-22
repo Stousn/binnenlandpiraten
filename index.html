@@ -46,7 +46,7 @@
                                 />
                             </g>
                             <!-- Augen & Nase (ausgestanzt) -->
-                            <g fill="#000">
+                            <g class="skull-cutout">
                                 <ellipse cx="11.5" cy="12.5" rx="2.4" ry="3" />
                                 <ellipse cx="20.5" cy="12.5" rx="2.4" ry="3" />
                                 <path d="M16 15 L14.5 18 L17.5 18 Z" />
@@ -107,7 +107,7 @@
                                 />
                             </g>
                             <!-- Augen & Nase (ausgestanzt) -->
-                            <g fill="#000">
+                            <g class="skull-cutout">
                                 <ellipse cx="11.5" cy="12.5" rx="2.4" ry="3" />
                                 <ellipse cx="20.5" cy="12.5" rx="2.4" ry="3" />
                                 <path d="M16 15 L14.5 18 L17.5 18 Z" />
@@ -689,6 +689,19 @@
                         Zudem haben Sie ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.
                     </p>
                 </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-event" role="dialog" aria-modal="true" aria-labelledby="modal-event-title" aria-hidden="true" hidden>
+            <div class="modal-backdrop" data-close-modal></div>
+            <div class="modal-dialog" role="document">
+                <header class="modal-header">
+                    <h2 id="modal-event-title">Event</h2>
+                    <button type="button" class="modal-close" data-close-modal aria-label="Event-Details schließen">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </header>
+                <div class="modal-body" id="modal-event-body"></div>
             </div>
         </div>
 
