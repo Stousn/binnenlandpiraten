@@ -1,3 +1,5 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto von Amaranthe und Epica" }]
+    "photos": [
+        { "alt": "Amaranthe", "src": "events/img/20260318_001.jpg" }, 
+        { "alt": "Epica", "src": "events/img/20260318_002.jpg" }]
 }

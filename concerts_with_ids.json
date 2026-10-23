@@ -421,6 +421,16 @@
             "venue": "OHO, Oberwart",
             "lineup": ["Shores Of Lunacy", "Ghidrah", "Fearancy"]
         },
+                {
+            "datetime": "2026-10-30",
+            "dateDisplay": "30.10.2026",
+            "type": "concert",
+            "title": "Fiddlers Green",
+            "tour": "35 Years Tour",
+            "venue": "ppc, Graz",
+            "support": ["Jolly Jackers"],
+            "desc": "Fiddler's Green feiern 2026 ihr 35-jähriges Bandjubiläum mit einer exklusiven Tour voller legendärer Hits, beliebter Klassiker und brandneuer Songs. Wir freuen uns auf eine mitreißende Live-Show, die musikalische Wurzeln mit frischer Energie verbindet und 35 Jahre Irish Speedfolk gebührend feiert! Mit dabei: Jolly Jackers"
+        },
         {
             "datetime": "2026-10-31",
             "dateDisplay": "31.10.2026",

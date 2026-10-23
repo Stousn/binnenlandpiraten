@@ -1,3 +1,6 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto von der W:O:A Warm Up Party" }]
+    "photos": [
+        { "alt": "Nanowar Of Steel", "src": "events/img/20260414_001.jpg" }, 
+        { "alt": "Bloody Holly And The Ricketz", "src": "events/img/20260414_002.jpg" }, 
+        { "alt": "Chaos Inside", "src": "events/img/20260414_003.jpg" }]
 }

@@ -1,3 +1,6 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto vom Area 53 Festival" }, { "alt": "Platzhalter: Bühne beim Area 53 Festival" }, { "alt": "Platzhalter: Crew beim Area 53 Festival" }]
+    "photos": [
+        { "alt": "Visions Of Atlantis", "src": "events/img/20260716_001.jpg" }, 
+        { "alt": "Area 53 Jesus fliegt", "src": "events/img/20260716_002.jpg" }, 
+        { "alt": "Ad Infinitum", "src": "events/img/20260716_003.jpg" }]
 }

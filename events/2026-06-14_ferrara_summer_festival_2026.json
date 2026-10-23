@@ -1,3 +1,5 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto vom Ferrara Summer Festival" }, { "alt": "Platzhalter: Piazza Ariostea in Ferrara" }]
+    "photos": [
+        { "alt": "Megadeth", "src": "events/img/20260614_001.jpg" }, 
+        { "alt": "Anthrax", "src": "events/img/20260614_002.jpg" }]
 }
