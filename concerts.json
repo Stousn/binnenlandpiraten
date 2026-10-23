@@ -217,9 +217,10 @@
         },
         {
             "datetime": "2026-01-20",
+            "id": "2026-01-20_heidenfest",
             "dateDisplay": "20.01.2026",
             "type": "festival",
-            "title": "Trollfest",
+            "title": "Heidenfest",
             "badge": "Festival",
             "headliner": ["Korpiklaani"],
             "venue": "Ottakringer Brauerei, Wien",
@@ -227,6 +228,7 @@
         },
         {
             "datetime": "2026-02-27",
+            "id": "2026-02-27_edenbridge",
             "dateDisplay": "27.02.2026",
             "type": "concert",
             "title": "Edenbridge",
@@ -236,6 +238,7 @@
         },
         {
             "datetime": "2026-03-04",
+            "id": "2026-03-04_avatar",
             "dateDisplay": "04.03.2026",
             "type": "concert",
             "title": "Avatar",
@@ -245,6 +248,7 @@
         },
         {
             "datetime": "2026-03-06",
+            "id": "2026-03-06_warkings_visions_of_atlantis",
             "dateDisplay": "06.03.2026",
             "type": "concert",
             "title": "Warkings & Visions Of Atlantis",
@@ -256,6 +260,7 @@
         },
         {
             "datetime": "2026-03-07",
+            "id": "2026-03-07_versengold",
             "dateDisplay": "07.03.2026",
             "type": "concert",
             "title": "Versengold",
@@ -265,6 +270,7 @@
         },
         {
             "datetime": "2026-03-18",
+            "id": "2026-03-18_amaranthe_epica",
             "dateDisplay": "18.03.2026",
             "type": "concert",
             "title": "Amaranthe & Epica",
@@ -276,6 +282,7 @@
         },
         {
             "datetime": "2026-03-20",
+            "id": "2026-03-20_manntra",
             "dateDisplay": "20.03.2026",
             "type": "concert",
             "title": "Manntra",
@@ -285,6 +292,7 @@
         },
         {
             "datetime": "2026-03-26",
+            "id": "2026-03-26_feuerschwanz",
             "dateDisplay": "26.03.2026",
             "type": "concert",
             "title": "Feuerschwanz",
@@ -294,6 +302,7 @@
         },
         {
             "datetime": "2026-04-18",
+            "id": "2026-04-18_w_o_a_2026_warm_up_party_vienna",
             "dateDisplay": "18.04.2026",
             "type": "festival",
             "title": "W:O:A 2026 Warm Up Party VIENNA",
@@ -304,6 +313,7 @@
         },
         {
             "datetime": "2026-04-19",
+            "id": "2026-04-19_victorius",
             "dateDisplay": "19.04.2026",
             "type": "concert",
             "title": "Victorius",
@@ -313,6 +323,7 @@
         },
         {
             "datetime": "2026-06-09",
+            "id": "2026-06-09_linkin_park",
             "dateDisplay": "09.06.2026",
             "type": "concert",
             "title": "Linkin Park",
@@ -322,6 +333,7 @@
         },
         {
             "datetime": "2026-06-14",
+            "id": "2026-06-14_ferrara_summer_festival_2026",
             "dateDisplay": "14.06.2026",
             "type": "festival",
             "title": "Ferrara Summer Festival 2026",
@@ -332,6 +344,7 @@
         },
         {
             "datetime": "2026-07-03",
+            "id": "2026-07-03_donauinselfest_2026",
             "dateDisplay": "03.–05.07.2026",
             "type": "festival",
             "title": "Donauinselfest 2026",
@@ -352,6 +365,7 @@
         },
         {
             "datetime": "2026-07-16",
+            "id": "2026-07-16_area_53_festival_2026",
             "dateDisplay": "16.–18.07.2026",
             "type": "festival",
             "title": "Area 53 Festival 2026",
@@ -376,6 +390,7 @@
         },
         {
             "datetime": "2026-08-29",
+            "id": "2026-08-29_metal_on_the_hill_festival_2026",
             "dateDisplay": "29.08.2026",
             "type": "festival",
             "title": "Metal on the Hill Festival 2026",
@@ -406,7 +421,7 @@
             "venue": "OHO, Oberwart",
             "lineup": ["Shores Of Lunacy", "Ghidrah", "Fearancy"]
         },
-        {
+                {
             "datetime": "2026-10-30",
             "dateDisplay": "30.10.2026",
             "type": "concert",
@@ -414,7 +429,7 @@
             "tour": "35 Years Tour",
             "venue": "ppc, Graz",
             "support": ["Jolly Jackers"],
-            "desc": "Fiddler’s Green feiern 2026 ihr 35-jähriges Bandjubiläum mit einer exklusiven Tour voller legendärer Hits, beliebter Klassiker und brandneuer Songs. Wir freuen uns auf eine mitreißende Live-Show, die musikalische Wurzeln mit frischer Energie verbindet und 35 Jahre Irish Speedfolk gebührend feiert! Mit dabei: Jolly Jackers"
+            "desc": "Fiddler's Green feiern 2026 ihr 35-jähriges Bandjubiläum mit einer exklusiven Tour voller legendärer Hits, beliebter Klassiker und brandneuer Songs. Wir freuen uns auf eine mitreißende Live-Show, die musikalische Wurzeln mit frischer Energie verbindet und 35 Jahre Irish Speedfolk gebührend feiert! Mit dabei: Jolly Jackers"
         },
         {
             "datetime": "2026-10-31",

@@ -1,3 +1,6 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto vom Donauinselfest" }]
+    "photos": [
+        { "alt": "Avatar", "src": "events/img/20260703_001.jpg" }, 
+        { "alt": "Feuerschwanz", "src": "events/img/20260703_002.jpg" }, 
+        { "alt": "Mr. Hurley und die Pulveraffen", "src": "events/img/20260703_003.jpg" }]
 }

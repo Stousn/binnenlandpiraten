@@ -1,3 +1,4 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto vom Versengold-Konzert" }, { "alt": "Platzhalter: Bühne bei Versengold" }]
+    "photos": [
+        { "alt": "Versengold", "src": "events/img/20260307_001.jpg" }]
 }

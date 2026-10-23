@@ -1,3 +1,6 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto von Warkings und Visions Of Atlantis" }, { "alt": "Platzhalter: Bühne bei Visions Of Atlantis" }, { "alt": "Platzhalter: Crew beim Konzert" }]
+    "photos": [
+        { "alt": "Warkings", "src": "events/img/20260306_001.jpg" }, 
+        { "alt": "Visions Of Atlantis", "src": "events/img/20260306_002.jpg" }, 
+        { "alt": "Induction", "src": "events/img/20260306_003.jpg" }]
 }

@@ -1,3 +1,4 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto vom Avatar-Konzert" }, { "alt": "Platzhalter: Bühne bei Avatar" }, { "alt": "Platzhalter: Crew beim Avatar-Konzert" }]
+    "photos": [
+        { "alt": "Avatar", "src": "events/img/20260304_001.jpg" }]
 }

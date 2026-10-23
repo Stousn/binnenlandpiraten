@@ -1,3 +1,6 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto vom Victorius-Konzert" }, { "alt": "Platzhalter: Bühne bei Victorius" }]
+    "photos": [
+        { "alt": "Victorius", "src": "events/img/20260419_001.jpg" }, 
+        { "alt": "Terra Atlantica", "src": "events/img/20260419_002.jpg" }, 
+        { "alt": "Eon Gods", "src": "events/img/20260419_003.jpg" }]
 }

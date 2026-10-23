@@ -1,3 +1,6 @@
 {
-    "photos": [{ "alt": "Platzhalter: Foto vom Linkin-Park-Konzert" }, { "alt": "Platzhalter: Stadion bei Linkin Park" }, { "alt": "Platzhalter: Crew beim Linkin-Park-Konzert" }]
+    "photos": [
+        { "alt": "Linkin Park", "src": "events/img/20260609_001.jpg" }, 
+        { "alt": "Linkin Park", "src": "events/img/20260609_002.jpg" }, 
+        { "alt": "Stadion mit Lasershow", "src": "events/img/20260609_003.jpg" }]
 }
