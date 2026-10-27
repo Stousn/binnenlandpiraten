@@ -1,6 +1,19 @@
 {
+    "rating": 4,
+    "crew": ["vanessa", "stefan"],
+    "report": [
+        "Wacken Open Air 2026 Warm-Up Party in Wien. Nanowar Of Steel kommen. Fixtermin.",
+        "Chaos Inside wärmen uns auf. Ein interessantes Konzept das gefällt.",
+        "Die Bloody Holly And The Ricketz aus Ungarn wirken wie eine Mischung aus BZFOS und Alice Cooper. Cooler Shock-Rock.",
+        "Headliner Nanowar Of Steel sind nicht für jeden, aber definitiv eine unterhaltsame Band mit viel Humor und Spielfreude. Die Publikums-Interaktion wird groß geschrieben und der Spaß steht hier an erster Stelle.",
+        "Zum Schluss sind wir dann in eine Polonaise geraten und ich war kurz Teil der Band die für ebendiese einen Tunnel bildete.",
+        "Auch ein Foto mit Gatto Panceri 666 gab es. Der Bandgrüner und Bassspieler ist Astrophysiker, Programmierer (Hello World.java) und spricht um die 10 Sprachen. Wir konnten und in Deutsch fließend unterhalten und waren sehr beeindruckt.",
+        "Gesehenes Lineup: Chaos Inside, Bloody Holly And The Ricketz, Nanowar Of Steel",
+        "- Captain"
+    ],
     "photos": [
-        { "alt": "Nanowar Of Steel", "src": "events/img/20260414_001.jpg" }, 
-        { "alt": "Bloody Holly And The Ricketz", "src": "events/img/20260414_002.jpg" }, 
-        { "alt": "Chaos Inside", "src": "events/img/20260414_003.jpg" }]
+        { "alt": "Nanowar Of Steel", "src": "events/img/20260414_001.jpg" },
+        { "alt": "Bloody Holly And The Ricketz", "src": "events/img/20260414_002.jpg" },
+        { "alt": "Chaos Inside", "src": "events/img/20260414_003.jpg" }
+    ]
 }

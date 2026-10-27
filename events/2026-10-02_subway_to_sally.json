@@ -1,6 +1,17 @@
 {
+    "rating": 5,
+    "crew": ["vanessa", "stefan"],
+    "report": [
+        "Eine von Vanessas ersten Einflüsse des Mittelalter-Rocks in ihren Musikgeschmack kamen 2026 mit dem Album Post Mortem und mit 30 Jahren Bühnenerfahrung nach Wien.",
+        "Storm Seeker, inzwischen ein Fixtermin für uns, heizten ein und das ordentlich. In der SimmCity war es ohnehin schon vor Begin ziemlich warm. Als Fabi mit ihrer Drehleier loslegte, füllte sich der Raum und als Sean bei Row Row Row zum Rudern animierte, gab es eines der proportional gesehen größten Ruderpits die ich bisher live erlebt habe. Wir mittendrin in Reihe 2.",
+        "Subway To Sally lieferten anschließlich ebenfalls ab. Nachdem der Aufforderung zum Crowdsurfen nicht binnen eines Songs nachgekommen wurde, entschloss sich Eric Fish selbst in der Menge zu baden. Auch wenn ich eher Plank zum Konzert ging - gut einige Songs wie Post Mortem, Eisblume und Siben kannte selbst ich - war der Abend ein sehr gelungener. Auch die Bandmitglieder hatten sichtlich Spaß auf der Bühne und legten ob der noch verfügbaren Zeit eine extra Nummer im Block der Zugaben nach.",
+        "Der Ton war schon schlechter in der SimmCity, auch wenn diese Location akkustisch nie ganz überzeugen kann. Dafür haben wir genug geschwitzt.",
+        "Gesehenes Lineup: Storm Seeker, Subway To Sally",
+        "- Captain"
+    ],
     "photos": [
-        { "alt": "Subway To Sally", "src": "events/img/20261002_001.jpg" }, 
-        { "alt": "Subway To Sally, Eric Fish beim Crowdsurfen", "src": "events/img/20261002_002.jpg" }, 
-        { "alt": "Storm Seeker", "src": "events/img/20261002_003.jpg" }]
+        { "alt": "Subway To Sally", "src": "events/img/20261002_001.jpg" },
+        { "alt": "Subway To Sally, Eric Fish beim Crowdsurfen", "src": "events/img/20261002_002.jpg" },
+        { "alt": "Storm Seeker", "src": "events/img/20261002_003.jpg" }
+    ]
 }

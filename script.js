@@ -226,17 +226,135 @@
     const eventUrl = (id) => `?event=${encodeURIComponent(id)}`;
     const getEventParam = () => new URLSearchParams(window.location.search).get('event');
 
+    /* Lightbox: eigene Tastatursteuerung, damit Esc nur sie und nicht das Event-Modal schließt */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox && lightbox.querySelector('.lightbox-img');
+    const lightboxCaption = lightbox && lightbox.querySelector('.lightbox-caption');
+    const lightboxClose = lightbox && lightbox.querySelector('.lightbox-close');
+    const lightboxPrev = lightbox && lightbox.querySelector('.lightbox-prev');
+    const lightboxNext = lightbox && lightbox.querySelector('.lightbox-next');
+
+    let lightboxPhotos = [];
+    let lightboxIndex = 0;
+    let lightboxTrigger = null;
+
+    const showLightboxPhoto = (index) => {
+        const count = lightboxPhotos.length;
+        lightboxIndex = (index + count) % count;
+        const photo = lightboxPhotos[lightboxIndex];
+        lightboxImg.src = photo.src;
+        const alt = photo.alt || '';
+        lightboxCaption.textContent = count > 1 ? `${alt} (${lightboxIndex + 1} / ${count})` : alt;
+    };
+
+    const openLightbox = (photos, index, trigger) => {
+        if (!lightbox) return;
+        lightboxPhotos = photos;
+        lightboxTrigger = trigger;
+        lightboxPrev.hidden = photos.length < 2;
+        lightboxNext.hidden = photos.length < 2;
+        showLightboxPhoto(index);
+        lightbox.hidden = false;
+        lightbox.setAttribute('aria-hidden', 'false');
+        lightboxClose.focus();
+    };
+
+    const closeLightbox = (restoreFocus = true) => {
+        if (!lightbox || lightbox.hidden) return;
+        lightbox.hidden = true;
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.removeAttribute('src');
+        if (restoreFocus && lightboxTrigger) lightboxTrigger.focus();
+        lightboxTrigger = null;
+    };
+
+    if (lightbox) {
+        lightboxClose.addEventListener('click', () => closeLightbox());
+        lightboxPrev.addEventListener('click', () => showLightboxPhoto(lightboxIndex - 1));
+        lightboxNext.addEventListener('click', () => showLightboxPhoto(lightboxIndex + 1));
+
+        // Klick neben Bild, Beschriftung und Buttons schließt
+        lightbox.addEventListener('click', (e) => {
+            if (!e.target.closest('.lightbox-btn, .lightbox-img, .lightbox-caption')) closeLightbox();
+        });
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+        lightbox.addEventListener(
+            'touchstart',
+            (e) => {
+                touchStartX = e.changedTouches[0].clientX;
+                touchStartY = e.changedTouches[0].clientY;
+            },
+            { passive: true }
+        );
+        lightbox.addEventListener(
+            'touchend',
+            (e) => {
+                if (lightboxPhotos.length < 2) return;
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                const dy = e.changedTouches[0].clientY - touchStartY;
+                if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+                    showLightboxPhoto(lightboxIndex + (dx < 0 ? 1 : -1));
+                }
+            },
+            { passive: true }
+        );
+
+        // Capture-Phase, damit der Handler des Modals nicht zusätzlich reagiert
+        document.addEventListener(
+            'keydown',
+            (e) => {
+                if (lightbox.hidden) return;
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft' && lightboxPhotos.length > 1) {
+                    e.preventDefault();
+                    showLightboxPhoto(lightboxIndex - 1);
+                } else if (e.key === 'ArrowRight' && lightboxPhotos.length > 1) {
+                    e.preventDefault();
+                    showLightboxPhoto(lightboxIndex + 1);
+                } else if (e.key === 'Tab') {
+                    e.stopPropagation();
+                    const buttons = [lightboxClose, lightboxPrev, lightboxNext].filter((b) => !b.hidden);
+                    const first = buttons[0];
+                    const last = buttons[buttons.length - 1];
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    } else if (!buttons.includes(document.activeElement)) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            },
+            true
+        );
+    }
+
     const buildPhotos = (photos) => {
         const list = el('ul', 'event-photos');
         list.setAttribute('role', 'list');
+        list.dataset.count = String(photos.length);
+        const viewable = photos.filter((photo) => photo.src);
         photos.forEach((photo) => {
             const li = el('li', 'event-photo');
             if (photo.src) {
+                const button = el('button', 'event-photo-btn');
+                button.type = 'button';
+                button.setAttribute('aria-label', `Foto vergrößern: ${photo.alt || ''}`);
                 const img = document.createElement('img');
                 img.src = photo.src;
-                img.alt = photo.alt || '';
+                img.alt = '';
                 img.loading = 'lazy';
-                li.appendChild(img);
+                button.appendChild(img);
+                button.addEventListener('click', () => openLightbox(viewable, viewable.indexOf(photo), button));
+                li.appendChild(button);
             } else {
                 const placeholder = el('div', 'event-photo-placeholder');
                 placeholder.setAttribute('role', 'img');
@@ -249,14 +367,96 @@
         return list;
     };
 
+    // Standard-Besetzung, solange eine Detail-JSON kein eigenes `crew` festlegt
+    const CREW = {
+        vanessa: { name: 'Vanessa', avatar: 'avatar-vanessa' },
+        stefan: { name: 'Stefan', avatar: 'avatar-stefan' }
+    };
+    const DEFAULT_CREW = ['vanessa', 'stefan'];
+
+    const buildFact = (label, content) => {
+        const fact = el('div', 'event-fact');
+        fact.appendChild(el('span', 'event-label', `${label}:`));
+        fact.appendChild(content);
+        return fact;
+    };
+
+    const buildCrew = (ids) => {
+        const members = ids.filter((id) => CREW[id]);
+        if (!members.length) return null;
+        const list = el('ul', 'event-crew');
+        list.setAttribute('role', 'list');
+        members.forEach((id) => {
+            const li = el('li', 'event-crew-member');
+            const avatar = el('span', `crew-avatar crew-avatar-sm ${CREW[id].avatar}`);
+            avatar.setAttribute('aria-hidden', 'true');
+            li.appendChild(avatar);
+            li.appendChild(el('span', null, CREW[id].name));
+            list.appendChild(li);
+        });
+        return list;
+    };
+
+    const buildRating = (rating) => {
+        const value = Math.round(Number(rating));
+        if (!(value >= 1 && value <= 5)) return null;
+        const wrap = el('span', 'event-rating');
+        wrap.setAttribute('role', 'img');
+        wrap.setAttribute('aria-label', `Bewertung: ${value} von 5 Totenköpfen`);
+        for (let i = 1; i <= 5; i += 1) {
+            const skull = el('span', i > value ? 'event-rating-skull is-empty' : 'event-rating-skull', '💀');
+            skull.setAttribute('aria-hidden', 'true');
+            wrap.appendChild(skull);
+        }
+        return wrap;
+    };
+
+    const renderFacts = (holder, detail) => {
+        holder.innerHTML = '';
+        const crew = buildCrew(Array.isArray(detail.crew) ? detail.crew : DEFAULT_CREW);
+        if (crew) holder.appendChild(buildFact('Dabei', crew));
+        const rating = buildRating(detail.rating);
+        if (rating) holder.appendChild(buildFact('Bewertung', rating));
+    };
+
+    // `report` darf ein String oder eine Liste von Absätzen sein
+    const renderReport = (holder, report) => {
+        holder.innerHTML = '';
+        const paragraphs = [].concat(report || []).filter((text) => typeof text === 'string' && text.trim());
+        if (!paragraphs.length) return;
+        const section = el('section', 'event-report');
+        section.appendChild(el('h3', null, 'Kurzbericht'));
+        paragraphs.forEach((text) => section.appendChild(el('p', null, text)));
+        holder.appendChild(section);
+    };
+
+    const renderInstagram = (holder, url) => {
+        holder.innerHTML = '';
+        if (typeof url !== 'string' || !/^https:\/\//.test(url)) return;
+        const link = el('a', 'event-details-link event-external-link', 'Auf Instagram ansehen');
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.appendChild(el('span', 'visually-hidden', ' (öffnet in neuem Tab)'));
+        holder.appendChild(link);
+    };
+
     const showEventDetail = (event, push) => {
         if (!eventModal || !window.bpModal) return;
 
+        closeLightbox(false);
         eventModal.dataset.eventId = event.id;
         eventModalTitle.textContent = event.title;
         eventModalBody.innerHTML = '';
         eventModalBody.appendChild(buildMeta(event));
         buildEventDetails(event).forEach((node) => eventModalBody.appendChild(node));
+
+        const factsHolder = el('div', 'event-facts');
+        const reportHolder = el('div');
+        const instagramHolder = el('div', 'event-instagram');
+        renderFacts(factsHolder, {});
+        eventModalBody.appendChild(factsHolder);
+        eventModalBody.appendChild(reportHolder);
 
         const photosSection = el('section', 'event-photos-section');
         photosSection.appendChild(el('h3', null, 'Fotos'));
@@ -264,6 +464,7 @@
         photosHolder.appendChild(el('p', 'note', 'Lade Fotos…'));
         photosSection.appendChild(photosHolder);
         eventModalBody.appendChild(photosSection);
+        eventModalBody.appendChild(instagramHolder);
 
         window.bpModal.open(eventModal);
         if (push) history.pushState({ bpEvent: event.id }, '', eventUrl(event.id));
@@ -275,6 +476,9 @@
             })
             .then((detail) => {
                 if (eventModal.dataset.eventId !== event.id) return;
+                renderFacts(factsHolder, detail);
+                renderReport(reportHolder, detail.report);
+                renderInstagram(instagramHolder, detail.instagram);
                 photosHolder.innerHTML = '';
                 const photos = Array.isArray(detail.photos) ? detail.photos : [];
                 photosHolder.appendChild(photos.length ? buildPhotos(photos) : el('p', 'note', 'Keine Fotos vorhanden.'));
@@ -310,6 +514,7 @@
 
     if (eventModal) {
         eventModal.addEventListener('modal:close', () => {
+            closeLightbox(false);
             if (!getEventParam()) return;
             if (history.state && history.state.bpEvent) {
                 history.back();
@@ -462,5 +667,177 @@
                 yearAccordion.innerHTML = '';
                 yearAccordion.appendChild(el('p', 'note', errorMsg));
             }
+        });
+})();
+
+/**
+ * Musik (Playlists & Featured Album)
+ * Lädt music.json; Streaming-Links werden nur angezeigt, wenn sie konfiguriert sind.
+ */
+(function () {
+    'use strict';
+
+    const playlistsContainer = document.getElementById('playlists-container');
+    const featuredContainer = document.getElementById('featured-album-container');
+
+    if (!playlistsContainer && !featuredContainer) {
+        return;
+    }
+
+    // Reihenfolge entspricht der Anzeige der Buttons
+    const SERVICES = {
+        apple: { label: 'Apple Music', icon: 'icon-apple', className: 'stream-btn-apple' },
+        spotify: { label: 'Spotify', icon: 'icon-spotify', className: 'stream-btn-spotify' },
+        youtube: { label: 'YouTube', icon: 'icon-youtube', className: 'stream-btn-youtube' }
+    };
+
+    const el = (tag, className, text) => {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+    };
+
+    const isHttpsUrl = (value) => typeof value === 'string' && /^https:\/\//.test(value);
+
+    const buildIcon = (iconId, size) => {
+        const ns = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('width', String(size));
+        svg.setAttribute('height', String(size));
+        svg.setAttribute('focusable', 'false');
+        const use = document.createElementNS(ns, 'use');
+        use.setAttribute('href', `#${iconId}`);
+        svg.appendChild(use);
+        return svg;
+    };
+
+    const externalLink = (className, url) => {
+        const link = el('a', className);
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        return link;
+    };
+
+    const buildPlaylistCard = (playlist) => {
+        const service = SERVICES[playlist.service];
+        if (!service || !isHttpsUrl(playlist.url) || !playlist.title) return null;
+
+        const li = el('li');
+        const card = externalLink('playlist-card', playlist.url);
+
+        const icon = el('span', 'playlist-icon');
+        icon.setAttribute('aria-hidden', 'true');
+        icon.appendChild(buildIcon(service.icon, 28));
+        card.appendChild(icon);
+
+        const text = el('span', 'playlist-text');
+        text.appendChild(el('span', 'playlist-label', `${service.label} · Playlist`));
+        text.appendChild(el('span', 'playlist-title', playlist.title));
+        if (playlist.description) text.appendChild(el('span', 'playlist-desc', playlist.description));
+        card.appendChild(text);
+
+        const cta = el('span', 'playlist-cta', '▶');
+        cta.setAttribute('aria-hidden', 'true');
+        card.appendChild(cta);
+        card.appendChild(el('span', 'visually-hidden', `Playlist auf ${service.label} öffnen (öffnet in neuem Tab)`));
+
+        li.appendChild(card);
+        return li;
+    };
+
+    const renderPlaylists = (playlists) => {
+        if (!playlistsContainer) return;
+        playlistsContainer.innerHTML = '';
+
+        const items = (Array.isArray(playlists) ? playlists : []).map(buildPlaylistCard).filter(Boolean);
+        if (!items.length) {
+            playlistsContainer.appendChild(el('p', 'note', 'Aktuell sind keine Playlists verfügbar.'));
+            return;
+        }
+
+        const list = el('ul', 'playlists');
+        list.setAttribute('role', 'list');
+        items.forEach((item) => list.appendChild(item));
+        playlistsContainer.appendChild(list);
+    };
+
+    const buildStreamLinks = (links) => {
+        const items = Object.keys(SERVICES)
+            .filter((key) => links && isHttpsUrl(links[key]))
+            .map((key) => {
+                const service = SERVICES[key];
+                const li = el('li');
+                const link = externalLink(`stream-btn ${service.className}`, links[key]);
+
+                const icon = el('span', 'stream-btn-icon');
+                icon.setAttribute('aria-hidden', 'true');
+                icon.appendChild(buildIcon(service.icon, 18));
+                link.appendChild(icon);
+                link.appendChild(el('span', null, service.label));
+                link.appendChild(el('span', 'visually-hidden', '(öffnet in neuem Tab)'));
+
+                li.appendChild(link);
+                return li;
+            });
+        if (!items.length) return null;
+
+        const list = el('ul', 'featured-links');
+        list.setAttribute('role', 'list');
+        list.setAttribute('aria-label', 'Album auf Streaming-Diensten anhören');
+        items.forEach((item) => list.appendChild(item));
+        return list;
+    };
+
+    const renderFeaturedAlbum = (album) => {
+        if (!featuredContainer) return;
+        featuredContainer.innerHTML = '';
+
+        if (!album || !album.artist || !album.title) {
+            featuredContainer.appendChild(el('p', 'note', 'Aktuell ist kein Album ausgewählt.'));
+            return;
+        }
+
+        const article = el('article', 'featured-album');
+
+        const cover = el('span', 'featured-cover');
+        cover.setAttribute('aria-hidden', 'true');
+        cover.appendChild(el('span', 'featured-cover-icon', '🎧'));
+        const hint = el('span', 'featured-cover-hint');
+        hint.appendChild(el('span', 'featured-cover-artist', album.artist.toUpperCase()));
+        hint.appendChild(el('span', 'featured-cover-title', album.title));
+        cover.appendChild(hint);
+        article.appendChild(cover);
+
+        const info = el('div', 'featured-info');
+        info.appendChild(el('span', 'featured-eyebrow', album.year ? `Featured Album · ${album.year}` : 'Featured Album'));
+        info.appendChild(el('p', 'featured-artist', album.artist));
+        info.appendChild(el('p', 'featured-album-title', album.title));
+        if (album.description) info.appendChild(el('p', 'featured-desc', album.description));
+        const links = buildStreamLinks(album.links);
+        if (links) info.appendChild(links);
+        article.appendChild(info);
+
+        featuredContainer.appendChild(article);
+    };
+
+    fetch('music.json')
+        .then((response) => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.json();
+        })
+        .then((data) => {
+            renderPlaylists(data.playlists);
+            renderFeaturedAlbum(data.featuredAlbum);
+        })
+        .catch(() => {
+            const errorMsg = 'Musik-Einträge konnten nicht geladen werden.';
+            [playlistsContainer, featuredContainer].forEach((container) => {
+                if (!container) return;
+                container.innerHTML = '';
+                container.appendChild(el('p', 'note', errorMsg));
+            });
         });
 })();

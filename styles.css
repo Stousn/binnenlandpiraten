@@ -468,7 +468,6 @@ a:focus-visible {
     background: url(img/admiral_transparent4.png) center / cover;
     position: relative;
     border: 1px solid var(--border);
-    
 }
 
 .avatar-stefan {
@@ -519,21 +518,21 @@ div.avatar-vanessa::before .avatar-stefan::before {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     aspect-ratio: 4 / 3;
-  
+
     align-items: center;
     justify-content: center;
     padding: 0;
     margin: 0;
     display: grid;
     gap: 0.75rem;
-    
+
     /* transition: */
-        /* transform var(--transition), */
-        /* border-color var(--transition); */
+    /* transform var(--transition), */
+    /* border-color var(--transition); */
 }
 
 .ueber-uns-cover::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
@@ -602,6 +601,13 @@ div.avatar-vanessa::before .avatar-stefan::before {
 }
 
 /* Utility: nur für Screenreader sichtbar */
+.icon-sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -1365,14 +1371,33 @@ div.avatar-vanessa::before .avatar-stefan::before {
 }
 
 .event-details-link {
-    display: inline-block;
-    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
     font-weight: 600;
+    text-decoration: none;
     color: var(--primary);
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition);
 }
 
-.event-details-link:hover {
-    color: var(--primary-hover);
+.event-details-link:hover,
+.event-details-link:focus-visible {
+    background: var(--primary);
+    color: #000;
+    transform: translateY(-1px);
+}
+
+.event-details-link:hover::after,
+.event-details-link:focus-visible::after {
+    transform: translateX(2px);
 }
 
 .event-details-link:focus-visible {
@@ -1381,6 +1406,87 @@ div.avatar-vanessa::before .avatar-stefan::before {
 }
 
 /* Event-Detail-Modal */
+#modal-event .modal-dialog {
+    max-width: 56rem;
+}
+
+#modal-event-body > :empty {
+    display: none;
+}
+
+#modal-event-body > .event-facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 0.9rem;
+}
+
+.event-fact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.event-crew {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.event-crew-member {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.15rem 0.75rem 0.15rem 0.2rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-elev);
+    font-weight: 600;
+}
+
+.crew-avatar-sm {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.9rem;
+}
+
+.event-rating {
+    display: inline-flex;
+    gap: 0.1rem;
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+.event-rating-skull.is-empty {
+    filter: grayscale(1);
+    opacity: 0.25;
+}
+
+.event-report {
+    margin-top: 0.9rem;
+}
+
+.event-report p {
+    color: var(--text);
+}
+
+#modal-event-body > .event-instagram {
+    margin-top: 1.25rem;
+}
+
+.event-external-link::after {
+    content: '\2197';
+}
+
+#modal-event .modal-header h2 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
 #modal-event-body > * + * {
     margin-top: 0.4rem;
 }
@@ -1390,18 +1496,69 @@ div.avatar-vanessa::before .avatar-stefan::before {
     margin: 0.5rem 0 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     gap: 0.75rem;
+}
+
+.event-photos[data-count='1'] {
+    grid-template-columns: 1fr;
+}
+
+.event-photos[data-count='2'],
+.event-photos[data-count='3'] {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Bei 3 Fotos: ein großes oben, zwei kleine darunter */
+.event-photos[data-count='3'] .event-photo:first-child {
+    grid-column: 1 / -1;
 }
 
 .event-photo img,
 .event-photo-placeholder {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
     object-fit: cover;
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
+}
+
+.event-photos[data-count='1'] .event-photo img,
+.event-photos[data-count='1'] .event-photo-placeholder,
+.event-photos[data-count='3'] .event-photo:first-child img,
+.event-photos[data-count='3'] .event-photo:first-child .event-photo-placeholder {
+    aspect-ratio: 16 / 9;
+}
+
+.event-photo-btn {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+    border-radius: var(--radius-sm);
+}
+
+.event-photo-btn img {
+    transition: filter var(--transition);
+}
+
+.event-photo-btn:hover img {
+    filter: brightness(1.1);
+}
+
+.event-photo-btn:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+@media (max-width: 40rem) {
+    .event-photos[data-count='2'],
+    .event-photos[data-count='3'] {
+        grid-template-columns: 1fr;
+    }
 }
 
 .event-photo-placeholder {
@@ -1708,6 +1865,7 @@ div.avatar-vanessa::before .avatar-stefan::before {
     max-width: 40rem;
     width: 100%;
     max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow);
@@ -1715,6 +1873,7 @@ div.avatar-vanessa::before .avatar-stefan::before {
 }
 
 .modal-header {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1756,6 +1915,8 @@ div.avatar-vanessa::before .avatar-stefan::before {
 .modal-body {
     padding: 1.25rem 1.5rem 1.5rem;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    min-height: 0;
 }
 
 .modal-body h3 {
@@ -1771,6 +1932,134 @@ div.avatar-vanessa::before .avatar-stefan::before {
 /* Prevent body scroll when modal open */
 body.modal-open {
     overflow: hidden;
+}
+
+/* Event-Modal auf dem Handy als Vollbild-Sheet */
+@media (max-width: 40rem) {
+    #modal-event {
+        padding: 0;
+        align-items: stretch;
+    }
+
+    #modal-event .modal-dialog {
+        max-width: none;
+        height: 100vh;
+        height: 100dvh;
+        max-height: none;
+        border: 0;
+        border-radius: 0;
+    }
+
+    #modal-event .modal-header,
+    #modal-event .modal-body {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Lightbox
+   ========================================================================== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.94);
+    overscroll-behavior: contain;
+}
+
+.lightbox[hidden],
+.lightbox-btn[hidden] {
+    display: none;
+}
+
+.lightbox-figure {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 4rem 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.lightbox-img {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    object-fit: contain;
+}
+
+.lightbox-caption {
+    flex: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.lightbox-btn {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.55);
+    color: var(--text);
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+.lightbox-btn:hover,
+.lightbox-btn:focus-visible {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #000;
+}
+
+.lightbox-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.5rem;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #fff;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-prev {
+    left: 0.75rem;
+}
+
+.lightbox-next {
+    right: 0.75rem;
+}
+
+@media (min-width: 48rem) {
+    .lightbox-figure {
+        padding: 4rem 5rem 1.5rem;
+    }
 }
 
 /* Animations

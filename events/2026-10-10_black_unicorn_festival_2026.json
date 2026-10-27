@@ -1,3 +1,16 @@
 {
-    "photos": [{ "alt": "Dragony", "src": "events/img/20261010_001.jpg" }, { "alt": "Temperance", "src": "events/img/20261010_002.jpg" }]
+    "rating": 4,
+    "crew": ["vanessa", "stefan"],
+    "report": [
+        "Dragony und Temperance gemeinsam bei einem Festival in Oberwart? Fixtermin.",
+        "Das Black Unicorn Festival war ein top organisiertes kleines Festival. Das Rock Kollektiv Süd hat ins OHO Oberwart geladen, eine nette kleine Location, viele bekannte Gesichter.",
+        "Musikalisch ein wilder Mix. Es war für jeden Metalhead etwas dabei, aber es war nicht alles für jeden. Dazwichen gab es Highlights wie den Einhornweitwurf und auch gute kullinarische Verpflegung.",
+        "Leider gab es vor Temperance technische Probleme, die den Auftritt etwas verzögerten und auch der Ton etwas weiter vorne war bei den beiden Headlinern nicht optimal.",
+        "Gesehenes Lineup: Teilweise: Shores Of Lunacy; Komplett: Dragony, Temperance, Fearancy und Ghidrah",
+        "- Captain"
+    ],
+    "photos": [
+        { "alt": "Dragony", "src": "events/img/20261010_001.jpg" },
+        { "alt": "Temperance", "src": "events/img/20261010_002.jpg" }
+    ]
 }

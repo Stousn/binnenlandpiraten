@@ -1,6 +1,15 @@
 {
+    "rating": 4,
+    "crew": ["vanessa", "stefan"],
+    "report": [
+        "Zum Heidenfest sind wir gefahren, weil und Korpiklaani am Area53 2025 überzeugt haben.",
+        "Die Veranstaltung top organisiert und die Stimmung großartig. Alle Bands die wir gesehen haben waren richtig gut. Die Location mag ich generell sehr.",
+        "Gesehenes Lineup: Finntroll, Trollfest, Heidevolk, Korpiklaani",
+        "- Captain"
+    ],
     "photos": [
-        { "alt": "Korpiklaani", "src": "events/img/20260120_001.jpg" }, 
-        { "alt": "Heidevolk", "src": "events/img/20260120_002.jpg" }, 
-        { "alt": "Trollfest", "src": "events/img/20260120_003.jpg" }]
+        { "alt": "Korpiklaani", "src": "events/img/20260120_001.jpg" },
+        { "alt": "Heidevolk", "src": "events/img/20260120_002.jpg" },
+        { "alt": "Trollfest", "src": "events/img/20260120_003.jpg" }
+    ]
 }

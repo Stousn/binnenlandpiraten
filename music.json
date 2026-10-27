@@ -1,0 +1,27 @@
+{
+    "playlists": [
+        {
+            "service": "apple",
+            "title": "We're Pirates!",
+            "description": "Unsere Lieblings-Piratenlieder. Arr!",
+            "url": "https://music.apple.com/at/playlist/were-pirates/pl.u-aZb0gevTRNN4Wb?l=en"
+        },
+        {
+            "service": "apple",
+            "title": "Knightclub Tour 2026",
+            "description": "Featured Setlist: Feuerschwanz",
+            "url": "https://music.apple.com/at/playlist/knightclub-tour-2026/pl.u-76oNPjpsqkkzgV?l=en-GB"
+        }
+    ],
+    "featuredAlbum": {
+        "year": 2026,
+        "artist": "Dominum",
+        "title": "Night Is Calling",
+        "description": "Neben dem bekannten Zombie-Thema liefern Dominum mit ihrem dritten Album inhaltlich auch andere Horror-Stories wie \"Nosferatu\", \"Jack The Ripper\" aber auch das Michael Jackson Cover \"Thriller\". Dabei wird es auch musikalisch vielseitig. Trotzdem klingt es nach dem bekannten Dominum-Sound und jede Nummer ist großartig.",
+        "links": {
+            "apple": "https://music.apple.com/us/album/night-is-calling/1891361521",
+            "spotify": "https://open.spotify.com/intl-de/album/6alnqRanGm5q9wwUvp9sJO",
+            "youtube": "https://www.youtube.com/playlist?list=OLAK5uy_k_A-B8CuBc7LUVsv9pvTiAWxUyoIVf2pQ"
+        }
+    }
+}
