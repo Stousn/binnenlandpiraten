@@ -1,6 +1,16 @@
 {
+    "rating": 5,
+    "crew": ["vanessa", "stefan"],
+    "report": [
+        "Spontan haben wir beschlossen, das Donauinselfest 2026 zu besuchen. Grund dafür: Das Line-up bei der 88.6 Rockbühne.",
+        "Wenn man bei freiem Eintritt die Möglichkeit hat, Bands wie Avatar, Feuerschwanz, Nanowar Of Steel und Mr. Hurley und die Pulveraffen live zu sehen, sollte man das auf keinen Fall verpassen.",
+        "Ein wunderschönes (und staubiges) Dorffest in der Stadt an der Donau. Wenn das Line-up stimmt, dann kommen wir nächstes Jahr wieder.",
+        "Gesehenes Lineup: Heroes & Heroine, Bloodsucking Zombies From Outer Space, Avatar, Coffeeshock Company, The Devastation, Black Sunzet, Venice Blue, Nanowar Of Steel, Airbourne, Zascha, Tailgunner, Mr. Hurley und die Pulveraffen und Feuerschwanz",
+        "- Captain"
+    ],
     "photos": [
-        { "alt": "Avatar", "src": "events/img/20260703_001.jpg" }, 
-        { "alt": "Feuerschwanz", "src": "events/img/20260703_002.jpg" }, 
-        { "alt": "Mr. Hurley und die Pulveraffen", "src": "events/img/20260703_003.jpg" }]
+        { "alt": "Avatar", "src": "events/img/20260703_001.jpg" },
+        { "alt": "Feuerschwanz", "src": "events/img/20260703_002.jpg" },
+        { "alt": "Mr. Hurley und die Pulveraffen", "src": "events/img/20260703_003.jpg" }
+    ]
 }

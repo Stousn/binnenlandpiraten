@@ -1,4 +1,17 @@
 {
-    "photos": [
-        { "alt": "Alestorm", "src": "events/img/20260729_001.jpg" }]
+    "rating": 5,
+    "crew": ["vanessa", "stefan"],
+    "report": [
+        "Metal On The Hill. Der Name ist Programm. Erst mal den Schlossberg besteigen und dann gibt es in einer der schönsten Locations die die Steiermark zu bieten hat, das in-House Festival von Napalm Records.",
+        "Es eröffnen die Grazer Matter Of Taste. Symphonischer Sound mit Tiefgang. Klasisker aus den 90ern.",
+        "Danach folgen Veins Of Suffering - was uns besonders freut, denn die Band kommt aus unserer Heimatstadt Leoben. Abgeliefert wird Melodic Death Metal.",
+        "Anschließend wird es skuril. Tabernis - das Gesicht verdeckt mit geflochtenen Korbdeckeln und im weißer Imker Gewandung  - betreten mit Davul und Sackpfeife bewaffnet die Bühne. Ein Folk Sound der ganz ohne Gesang auskommt, unterhaltet das Publikum. Ich kann mir dafür keine bessere Location wie die Kassemattenbühne vorstellen.",
+        "Wem das zu exotisch ist, für den spielen anschließend Burning Witches. Schweizer Heavy Metal und Power Metal in rein weiblicher Besetzung.",
+        "Viele Fans sind merklich wegen Max Cavalera am Hügel. Mit Soulfly wird Trash Metal, Death Metal, Groove Metal und NU Metal Made in Brazil präsentiert.",
+        "Zu guter Letzt wird die Gummiente aufgeblasen - okay sogar zwei. Rum, beer, quests and mead - these are the things that a pirate needs. Under the sign of the Storm of Ale wird der nicht ganz ernst zu nehmende Piraten Metal aus Schottland angestimmt. Alestorm geben Gas. Auch wenn der Ente im Publikum nach nur einer Nummer die Luft ausgeht - die hätte laut Chris Bowes die ganze Show durchhalten sollen - passiert das im Publikum nicht und auch die Ente wird zum Schluss geflickt und darf nochmal für eine Pirate P.A.R.T.Y. fliegen",
+        "Gesehenes Lineup: Matter Of Taste, Veins Of Suffering, Tabernis, Burning Witches, Soulfly, Alestorm",
+        "- Captain"
+    ],
+
+    "photos": [{ "alt": "Alestorm", "src": "events/img/20260729_001.jpg" }]
 }
