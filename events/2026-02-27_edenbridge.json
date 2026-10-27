@@ -1,4 +1,12 @@
 {
+    "rating": 3,
+    "crew": ["vanessa", "stefan"],
+    "report": [
+        "G.O.D - Gears Of Deception eröffnen mit Melodic Rock Made in Austria.",
+        "Danach treten Free2Fly auf, ebenfalls eine Melodic Rock Band. Die Wiener rund um Sänger Sergio Tallo Torres hatten sichtlich Spaß auf der Bühne und haben das auch aufs Publikum übertragen. Wir haben diese Band sehr gefeiert. Ein toller Support Act.",
+        "Edenbridge sind Symphonic Metal Klassiker aus Österreich, daher mussten wir sie sehen. Wie so oft in diesem Genre stammt die Band aus den späten 1990er Jahren und ist inspiriert von Nightwish. Entgegen manch andere Genre-Verwandten ist Edenbridge aber irgendwie in der Zeit stehen geblieben. Der Stil, die Inszinierung, das Publikum, alles original. Das kann man nun positiv und negativ auslegen. Ich finde schon, dass hier musikalisch und gesanglich Qualität auf sehr hohem Niveau abgeliefert wurde. Ein bisschen hätte ich mir persönlich aber gewünscht, dass sich die Band etwas mehr weiter entwickelt, aber das kann jeder sehen wie er will und ich möchte jeden den Spaß an solchen Konzerten lassen. Halt ein Klassiker.",
+        "- Captain"
+    ],
     "photos": [
         { "alt": "Edenbridge", "src": "events/img/20260227_001.jpg" }]
 }
