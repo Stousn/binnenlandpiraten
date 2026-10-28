@@ -3,9 +3,8 @@
     "crew": ["vanessa", "stefan"],
     "report": [
         "Kupfergold eröffnet, solide aber die Bühne im Gasometer wirkte schon etwas groß für die Folk-Rocker. Etwas intimer können sie sicher mehr überzeugen.",
-        "Versengold bring ein Schiff auf die Bühne und liefert eine optisch sehr aufwendige und durchdachte Show mit viel Stimmung. Musikalisch trifft es nicht ganz meinen Geschmach, Vanessa war aber vollends begeistert.",
+        "Versengold bring ein Schiff auf die Bühne und liefert eine optisch sehr aufwendige und durchdachte Show mit viel Stimmung. Musikalisch trifft es nicht ganz meinen Geschmack, Vanessa war aber vollends begeistert.",
         "- Captain"
     ],
-    "photos": [
-        { "alt": "Versengold", "src": "events/img/20260307_001.jpg" }]
+    "photos": [{ "alt": "Versengold", "src": "events/img/20260307_001.jpg" }]
 }

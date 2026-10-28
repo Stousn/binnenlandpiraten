@@ -2,12 +2,13 @@
     "rating": 4,
     "crew": ["vanessa", "stefan"],
     "report": [
-        "Epica ist mal wieder auf einer Co-Headliner Tour. Optisch sind die Kings und Queens der Visuals ein Erlebnis. Starker Symphonic Metal mit der gigangtischen Stimme von Simone Simons. Heimlicher Held ist auch Coen Janssen am Keyboard bei dem es eine Freude ist ihm zuzusehen. Gerne wieder.",
+        "Epica ist mal wieder auf einer Co-Headliner Tour. Optisch sind die Kings und Queens der Visuals ein Erlebnis. Starker Symphonic Metal mit der gigantischen Stimme von Simone Simons. Heimlicher Held ist auch Coen Janssen am Keyboard, bei dem es eine Freude ist, ihm zuzusehen. Gerne wieder.",
         "Amaranthe hat Vanessa ebenfalls voll überzeugt. Gleich drei Stimmengewalten batteln sich mit Gitarre, Bass, Keyboard und Morten Løwe Sørensens Schlagzeug. Einen kannten wir schon Nils Molin hat schon mit Dynazty beeindruckt. Ein bisschen mehr Fan-Interaktion hätte ich mir aber gewünscht. Meine Erwartungen dürften etwas zu hoch angesetzt gewesen sein. Toll war es dennoch.",
         "Gesehenes Lineup: Charlotte Wessels - The Obsession, Epica, Amaranthe",
         "- Captain"
     ],
     "photos": [
-        { "alt": "Amaranthe", "src": "events/img/20260318_001.jpg" }, 
-        { "alt": "Epica", "src": "events/img/20260318_002.jpg" }]
+        { "alt": "Amaranthe", "src": "events/img/20260318_001.jpg" },
+        { "alt": "Epica", "src": "events/img/20260318_002.jpg" }
+    ]
 }
