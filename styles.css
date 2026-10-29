@@ -1482,6 +1482,116 @@ div.avatar-vanessa::before .avatar-stefan::before {
     content: '\2197';
 }
 
+/* Ungültiger Event-Link */
+.notfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.notfound-map {
+    position: relative;
+    width: 100%;
+    max-width: 22rem;
+}
+
+.notfound-map svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.nf-paper {
+    fill: var(--bg-elev);
+    stroke: var(--primary);
+    stroke-width: 1.5;
+}
+
+.nf-sea {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.nf-ship path,
+.nf-ship circle {
+    fill: var(--surface);
+    stroke: var(--primary);
+    stroke-width: 2;
+    stroke-linejoin: round;
+}
+
+.nf-ship .nf-mast {
+    fill: none;
+}
+
+.nf-route {
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 2;
+    stroke-dasharray: 2 6;
+    stroke-linecap: round;
+}
+
+.nf-x path {
+    fill: none;
+    stroke: var(--danger);
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.nf-skull {
+    display: none;
+    fill: var(--primary);
+}
+
+.notfound.is-found .nf-x {
+    display: none;
+}
+
+.notfound.is-found .nf-skull {
+    display: inline;
+}
+
+/* Unsichtbare Klickfläche über dem X der Karte (230/320, 100/180) */
+.notfound-x {
+    position: absolute;
+    left: 71.9%;
+    top: 55.6%;
+    width: 3rem;
+    height: 3rem;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.notfound-x:hover {
+    background: rgba(239, 71, 111, 0.15);
+}
+
+.notfound-x:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.notfound-lead,
+.notfound-dig {
+    margin: 0;
+    max-width: 30rem;
+}
+
+.notfound-dig {
+    min-height: 1.5em;
+    color: var(--primary);
+    font-weight: 600;
+}
+
 #modal-event .modal-header h2 {
     min-width: 0;
     overflow-wrap: anywhere;

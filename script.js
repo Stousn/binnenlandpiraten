@@ -490,12 +490,77 @@
             });
     };
 
+    // Statisches Markup, enthält keine Nutzereingaben
+    const NOT_FOUND_MAP = `
+        <svg viewBox="0 0 320 180" role="img" aria-label="Schatzkarte: Ein Schiff auf Rädern steht mitten im Binnenland, ein gestrichelter Weg führt zu einem X." focusable="false">
+            <path class="nf-paper" d="M12 14 L60 8 L120 14 L190 7 L260 13 L308 9 L312 70 L306 120 L311 168 L250 173 L180 167 L110 174 L50 168 L9 172 L14 110 L8 60 Z" />
+            <path class="nf-sea" d="M262 22 q10 -6 20 0 t20 0 M262 34 q10 -6 20 0 t20 0" />
+            <g class="nf-ship">
+                <path d="M30 118 h52 l-8 16 h-36 z" />
+                <path class="nf-mast" d="M56 118 v-42" />
+                <path d="M58 80 l22 30 h-22 z" />
+                <circle cx="42" cy="139" r="5" />
+                <circle cx="70" cy="139" r="5" />
+            </g>
+            <path class="nf-route" d="M84 132 C 120 150, 140 90, 170 110 S 205 125, 226 102" />
+            <g class="nf-x"><path d="M218 88 L242 112 M242 88 L218 112" /></g>
+            <g class="nf-skull" transform="translate(207.6 83.2) scale(1.4)">
+                <path d="M16 2 C 9.5 2, 5 6.5, 5 12.5 C 5 16, 6.5 18.5, 8.5 20 L 8.5 22.5 L 13 22.5 L 13 20.5 L 15 20.5 L 15 22.5 L 17 22.5 L 17 20.5 L 19 20.5 L 19 22.5 L 23.5 22.5 L 23.5 20 C 25.5 18.5, 27 16, 27 12.5 C 27 6.5, 22.5 2, 16 2 Z" />
+                <g class="skull-cutout">
+                    <ellipse cx="11.5" cy="12.5" rx="2.4" ry="3" />
+                    <ellipse cx="20.5" cy="12.5" rx="2.4" ry="3" />
+                    <path d="M16 15 L14.5 18 L17.5 18 Z" />
+                </g>
+            </g>
+        </svg>`;
+
+    // Easter Egg: das X auf der Karte antippen
+    const DIG_MESSAGES = [
+        'Hier ist nichts vergraben..',
+        'Du gräbst immer noch? Die Landratte in dir ist stark.',
+        'Immer noch am Graben? Du kannst es wohl nicht lassen.',
+        'Vielleicht solltest du aufhören zu graben.',
+        'Na gut: Der wahre Schatz sind die Konzerte, die wir unterwegs erleben. Arr!'
+    ];
+
+    const buildNotFound = () => {
+        const wrap = el('div', 'notfound');
+
+        const map = el('div', 'notfound-map');
+        map.innerHTML = NOT_FOUND_MAP;
+        const dig = el('button', 'notfound-x');
+        dig.type = 'button';
+        dig.setAttribute('aria-label', 'Hier graben');
+        map.appendChild(dig);
+        wrap.appendChild(map);
+
+        wrap.appendChild(el('p', 'notfound-lead', 'Dieses Logbuch-Blatt gibt es nicht. Vielleicht ist der Link verrutscht oder der Kraken hat die Karte gefressen.'));
+
+        const digText = el('p', 'notfound-dig');
+        digText.setAttribute('aria-live', 'polite');
+        wrap.appendChild(digText);
+
+        let digs = 0;
+        dig.addEventListener('click', () => {
+            digs += 1;
+            digText.textContent = DIG_MESSAGES[Math.min(digs, DIG_MESSAGES.length) - 1];
+            if (digs >= DIG_MESSAGES.length) wrap.classList.add('is-found');
+        });
+
+        const back = el('button', 'btn btn-primary', 'Zurück zum Logbuch');
+        back.type = 'button';
+        back.addEventListener('click', () => window.bpModal.close(eventModal));
+        wrap.appendChild(back);
+
+        return wrap;
+    };
+
     const showEventNotFound = () => {
         if (!eventModal || !window.bpModal) return;
         eventModal.dataset.eventId = '';
-        eventModalTitle.textContent = 'Event nicht gefunden';
+        eventModalTitle.textContent = '404. Falscher Kurs, Landratte!';
         eventModalBody.innerHTML = '';
-        eventModalBody.appendChild(el('p', 'note', 'Zu diesem Link gibt es keine Detail-Ansicht.'));
+        eventModalBody.appendChild(buildNotFound());
         window.bpModal.open(eventModal);
     };
 
