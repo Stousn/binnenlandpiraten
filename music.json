@@ -8,20 +8,20 @@
         },
         {
             "service": "apple",
-            "title": "Knightclub Tour 2026",
-            "description": "Featured Setlist: Feuerschwanz",
-            "url": "https://music.apple.com/at/playlist/knightclub-tour-2026/pl.u-76oNPjpsqkkzgV?l=en-GB"
+            "title": "Resurrection Tour 2026",
+            "description": "Featured Setlist: Beast In Black (with special guests)",
+            "url": "https://music.apple.com/at/playlist/resurrection-tour-2026/pl.u-d2b0M30sGllEZo?l=en-GBB"
         }
     ],
     "featuredAlbum": {
         "year": 2026,
-        "artist": "Dominum",
-        "title": "Night Is Calling",
-        "description": "Neben dem bekannten Zombie-Thema liefern Dominum mit ihrem dritten Album inhaltlich auch andere Horror-Stories wie \"Nosferatu\", \"Jack The Ripper\" aber auch das Michael Jackson Cover \"Thriller\". Dabei wird es auch musikalisch vielseitig. Trotzdem klingt es nach dem bekannten Dominum-Sound und jede Nummer ist großartig.",
+        "artist": "Temperance",
+        "title": "Arcani",
+        "description": "Bei der live Premiere von Fool waren wir dabei, auch die beiden Singles 'The Devil: Sin, Sin, Sin' und 'Death: Right Before We Die' klangen schon richtig gut. Das ganze Album ist ein Highlight.",
         "links": {
-            "apple": "https://music.apple.com/us/album/night-is-calling/1891361521",
-            "spotify": "https://open.spotify.com/intl-de/album/6alnqRanGm5q9wwUvp9sJO",
-            "youtube": "https://www.youtube.com/playlist?list=OLAK5uy_k_A-B8CuBc7LUVsv9pvTiAWxUyoIVf2pQ"
+            "apple": "https://music.apple.com/at/album/arcani/6775905167?l=en-GB",
+            "spotify": "https://open.spotify.com/album/0qt534LZMLWVb7LJpfzqeL",
+            "youtube": "https://www.youtube.com/watch?v=o53x88pFRls&list=OLAK5uy_m66GcSBV76I5bUTvMSHW1JOR0myUZS25c"
         }
     }
 }
