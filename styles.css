@@ -1592,6 +1592,122 @@ div.avatar-vanessa::before .avatar-stefan::before {
     font-weight: 600;
 }
 
+/* Foto-Diashow
+   ========================================================================== */
+.slideshow {
+    max-width: 70rem;
+    margin: 0 auto 2rem;
+}
+
+.slideshow-stage {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.slideshow-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 300ms ease;
+}
+
+.slideshow-img.is-loading {
+    opacity: 0;
+}
+
+.slideshow-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 2.5rem 1rem 0.75rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+}
+
+.slideshow-caption-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.slideshow-caption-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.slideshow-caption .event-details-link {
+    margin-top: 0;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.slideshow-caption .event-details-link:not(:hover):not(:focus-visible) {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.slideshow-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.slideshow-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+.slideshow-btn:hover,
+.slideshow-btn:focus-visible {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #000;
+}
+
+.slideshow-btn[hidden],
+.slideshow-counter[hidden] {
+    display: none;
+}
+
+.slideshow-counter {
+    min-width: 4rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .slideshow-img {
+        transition: none;
+    }
+}
+
 #modal-event .modal-header h2 {
     min-width: 0;
     overflow-wrap: anywhere;
@@ -1615,12 +1731,20 @@ div.avatar-vanessa::before .avatar-stefan::before {
 }
 
 .event-photos[data-count='2'],
-.event-photos[data-count='3'] {
+.event-photos[data-count='3'],
+.event-photos[data-count='4'],
+.event-photos[data-count='many'] {
     grid-template-columns: repeat(2, 1fr);
 }
 
-/* Bei 3 Fotos: ein großes oben, zwei kleine darunter */
-.event-photos[data-count='3'] .event-photo:first-child {
+/* Bei 3 und ab 5 Fotos: ein großes oben, der Rest darunter */
+.event-photos[data-count='3'] .event-photo:first-child,
+.event-photos[data-count='many'] .event-photo:first-child {
+    grid-column: 1 / -1;
+}
+
+/* Bleibt in der letzten Zeile ein Foto allein, füllt es die Breite */
+.event-photos[data-count='many'] .event-photo:last-child:nth-child(even) {
     grid-column: 1 / -1;
 }
 
@@ -1637,7 +1761,11 @@ div.avatar-vanessa::before .avatar-stefan::before {
 .event-photos[data-count='1'] .event-photo img,
 .event-photos[data-count='1'] .event-photo-placeholder,
 .event-photos[data-count='3'] .event-photo:first-child img,
-.event-photos[data-count='3'] .event-photo:first-child .event-photo-placeholder {
+.event-photos[data-count='3'] .event-photo:first-child .event-photo-placeholder,
+.event-photos[data-count='many'] .event-photo:first-child img,
+.event-photos[data-count='many'] .event-photo:first-child .event-photo-placeholder,
+.event-photos[data-count='many'] .event-photo:last-child:nth-child(even) img,
+.event-photos[data-count='many'] .event-photo:last-child:nth-child(even) .event-photo-placeholder {
     aspect-ratio: 16 / 9;
 }
 

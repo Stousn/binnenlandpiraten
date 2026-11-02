@@ -340,7 +340,8 @@
     const buildPhotos = (photos) => {
         const list = el('ul', 'event-photos');
         list.setAttribute('role', 'list');
-        list.dataset.count = String(photos.length);
+        // Ab 5 Fotos gilt dasselbe Layout (erstes groß, Rest zweispaltig)
+        list.dataset.count = photos.length >= 5 ? 'many' : String(photos.length);
         const viewable = photos.filter((photo) => photo.src);
         photos.forEach((photo) => {
             const li = el('li', 'event-photo');
@@ -589,6 +590,14 @@
         });
         window.addEventListener('popstate', syncModalWithUrl);
     }
+
+    // Für die Diashow (separater Scope)
+    window.bpEvents = {
+        open: (id) => {
+            const event = detailEvents.get(id);
+            if (event) showEventDetail(event, true);
+        }
+    };
 
     const buildTimelineItem = (event) => {
         const li = el('li', `event ${event.type === 'festival' ? 'event-festival' : 'event-concert'}`);
@@ -905,4 +914,252 @@
                 container.appendChild(el('p', 'note', errorMsg));
             });
         });
+})();
+
+/**
+ * Foto-Diashow (Fotos-Bereich)
+ * Sammelt alle Fotos aus den Detail-JSONs vergangener Events und zeigt sie in zufälliger Reihenfolge.
+ * Ein Browser kann keinen Ordner auflisten, deshalb dienen die Detail-JSONs als Quelle.
+ */
+(function () {
+    'use strict';
+
+    const container = document.getElementById('slideshow-container');
+    if (!container) {
+        return;
+    }
+
+    const INTERVAL_MS = 5000;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const el = (tag, className, text) => {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+    };
+
+    const parseISODate = (isoDate) => {
+        const [year, month, day] = isoDate.split('-').map(Number);
+        return new Date(year, month - 1, day);
+    };
+
+    const shuffle = (list) => {
+        for (let i = list.length - 1; i > 0; i -= 1) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [list[i], list[j]] = [list[j], list[i]];
+        }
+        return list;
+    };
+
+    const loadPhotos = () =>
+        fetch('concerts.json')
+            .then((response) => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+            })
+            .then((data) => {
+                const now = new Date();
+                const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                const events = (Array.isArray(data.events) ? data.events : []).filter((event) => event.id && parseISODate(event.datetime) < today);
+
+                return Promise.all(
+                    events.map((event) =>
+                        fetch(`events/${encodeURIComponent(event.id)}.json`)
+                            .then((response) => (response.ok ? response.json() : null))
+                            .catch(() => null)
+                            .then((detail) =>
+                                (detail && Array.isArray(detail.photos) ? detail.photos : [])
+                                    .filter((photo) => photo.src)
+                                    .map((photo) => ({ src: photo.src, alt: photo.alt || '', eventId: event.id, title: event.title, date: event.dateDisplay }))
+                            )
+                    )
+                );
+            })
+            .then((groups) => [].concat(...groups));
+
+    const build = (photos) => {
+        container.innerHTML = '';
+
+        const root = el('div', 'slideshow');
+        root.setAttribute('role', 'group');
+        root.setAttribute('aria-roledescription', 'Diashow');
+        root.setAttribute('aria-label', 'Fotos von unseren Events');
+
+        const stage = el('figure', 'slideshow-stage');
+        const img = el('img', 'slideshow-img');
+        const caption = el('figcaption', 'slideshow-caption');
+        const captionText = el('span', 'slideshow-caption-text');
+        const captionTitle = el('strong');
+        const captionMeta = el('span', 'slideshow-caption-meta');
+        captionText.appendChild(captionTitle);
+        captionText.appendChild(captionMeta);
+        const eventButton = el('button', 'event-details-link', 'Zum Event');
+        eventButton.type = 'button';
+        caption.appendChild(captionText);
+        caption.appendChild(eventButton);
+        stage.appendChild(img);
+        stage.appendChild(caption);
+        root.appendChild(stage);
+
+        const controls = el('div', 'slideshow-controls');
+        const prev = el('button', 'slideshow-btn', '\u2039');
+        const toggle = el('button', 'slideshow-btn');
+        const counter = el('span', 'slideshow-counter');
+        const next = el('button', 'slideshow-btn', '\u203A');
+        [prev, toggle, next].forEach((button) => {
+            button.type = 'button';
+        });
+        prev.setAttribute('aria-label', 'Vorheriges Foto');
+        next.setAttribute('aria-label', 'Nächstes Foto');
+        controls.appendChild(prev);
+        controls.appendChild(toggle);
+        controls.appendChild(counter);
+        controls.appendChild(next);
+        root.appendChild(controls);
+        container.appendChild(root);
+
+        let index = 0;
+        let playing = !reduceMotion;
+        let visible = false;
+        let hovered = false;
+        let timer = null;
+
+        const show = (target) => {
+            index = (target + photos.length) % photos.length;
+            const photo = photos[index];
+            img.classList.add('is-loading');
+            img.onload = () => img.classList.remove('is-loading');
+            img.onerror = () => img.classList.remove('is-loading');
+            img.alt = photo.alt;
+            img.src = photo.src;
+            captionTitle.textContent = photo.alt || photo.title;
+            captionMeta.textContent = `${photo.title} · ${photo.date}`;
+            eventButton.setAttribute('aria-label', `Zum Event ${photo.title}`);
+            counter.textContent = `${index + 1} / ${photos.length}`;
+            // Nächstes Foto vorladen
+            new Image().src = photos[(index + 1) % photos.length].src;
+        };
+
+        const updateTimer = () => {
+            window.clearInterval(timer);
+            timer = null;
+            if (playing && visible && !hovered && photos.length > 1) {
+                timer = window.setInterval(() => {
+                    if (!document.hidden) show(index + 1);
+                }, INTERVAL_MS);
+            }
+        };
+
+        const updateToggle = () => {
+            toggle.textContent = playing ? '\u275A\u275A' : '\u25B6';
+            toggle.setAttribute('aria-label', playing ? 'Diashow anhalten' : 'Diashow starten');
+            // Automatische Wechsel nicht vorlesen, manuelle schon
+            stage.setAttribute('aria-live', playing ? 'off' : 'polite');
+        };
+
+        prev.addEventListener('click', () => show(index - 1));
+        next.addEventListener('click', () => show(index + 1));
+        toggle.addEventListener('click', () => {
+            playing = !playing;
+            updateToggle();
+            updateTimer();
+        });
+        eventButton.addEventListener('click', () => {
+            if (window.bpEvents) window.bpEvents.open(photos[index].eventId);
+        });
+
+        root.addEventListener('mouseenter', () => {
+            hovered = true;
+            updateTimer();
+        });
+        root.addEventListener('mouseleave', () => {
+            hovered = false;
+            updateTimer();
+        });
+        root.addEventListener('focusin', () => {
+            hovered = true;
+            updateTimer();
+        });
+        root.addEventListener('focusout', () => {
+            hovered = false;
+            updateTimer();
+        });
+        root.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') show(index - 1);
+            else if (e.key === 'ArrowRight') show(index + 1);
+        });
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+        stage.addEventListener(
+            'touchstart',
+            (e) => {
+                touchStartX = e.changedTouches[0].clientX;
+                touchStartY = e.changedTouches[0].clientY;
+            },
+            { passive: true }
+        );
+        stage.addEventListener(
+            'touchend',
+            (e) => {
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                const dy = e.changedTouches[0].clientY - touchStartY;
+                if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(index + (dx < 0 ? 1 : -1));
+            },
+            { passive: true }
+        );
+
+        if (photos.length < 2) {
+            [prev, next, toggle, counter].forEach((node) => {
+                node.hidden = true;
+            });
+        }
+
+        updateToggle();
+        show(0);
+
+        // Nur weiterschalten, solange die Diashow im Bild ist
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver((entries) => {
+                visible = entries[0].isIntersecting;
+                updateTimer();
+            }).observe(root);
+        } else {
+            visible = true;
+            updateTimer();
+        }
+    };
+
+    const init = () => {
+        loadPhotos()
+            .then((photos) => {
+                if (!photos.length) {
+                    container.innerHTML = '';
+                    container.appendChild(el('p', 'note', 'Noch keine Fotos vorhanden.'));
+                    return;
+                }
+                build(shuffle(photos));
+            })
+            .catch(() => {
+                container.innerHTML = '';
+                container.appendChild(el('p', 'note', 'Fotos konnten nicht geladen werden.'));
+            });
+    };
+
+    // Erst laden, wenn der Bereich fast sichtbar ist
+    if ('IntersectionObserver' in window) {
+        const loader = new IntersectionObserver(
+            (entries) => {
+                if (entries.some((entry) => entry.isIntersecting)) {
+                    loader.disconnect();
+                    init();
+                }
+            },
+            { rootMargin: '300px' }
+        );
+        loader.observe(container);
+    } else {
+        init();
+    }
 })();
