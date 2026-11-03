@@ -13,5 +13,12 @@
         "Mir war nicht bewusst, wie viel ich von dieser Band kenne und wie gern ich diese Songs höre. Zum Glück haben wir vorher schon ein Patch Set gekauft, denn BiB muss unbedingt auf meine Kutte.",
         "Gesehenes Lineup: Frozen Crown, Sonata Arctica, Beast In Black",
         "- Captain"
+    ],
+"photos": [
+        { "alt": "Frozen Crown", "src": "events/img/20261030_001.jpg" },
+        { "alt": "Sonata Arctica", "src": "events/img/20261030_002.jpg" },
+         { "alt": "Beast In Black", "src": "events/img/20261030_003.jpg" },
+         { "alt": "Beast In Black", "src": "events/img/20261030_004.jpg" },
+         { "alt": "Beast In Black", "src": "events/img/20261030_005.jpg" }
     ]
 }
