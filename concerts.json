@@ -466,6 +466,7 @@
         },
         {
             "datetime": "2026-11-10",
+            "id": "2026-11-10_gloryhammer",
             "dateDisplay": "10.11.2026",
             "type": "concert",
             "title": "Gloryhammer",
@@ -473,6 +474,15 @@
             "venue": "Arena, Wien",
             "support": ["Majestica", "Arion"],
             "desc": "Gloryhammer bringen ihre 5th Album Release Tour 2026 auf die Bühne und feiern ihr neues Album \"LEGENDS FROM BEYOND THE GALACTIC TERRORVORTEX\" mit einer spektakulären Power-Metal-Show voller epischer Geschichten, galaktischer Schlachten und mitreißender Hymnen. Gemeinsam mit Majestica und Arion erwartet das Publikum ein Abend voller Fantasy, Humor und heroischer Metal-Energie."
+        },
+        {
+            "datetime": "2026-11-14",
+            "dateDisplay": "14.11.2026",
+            "type": "festival",
+           "title": "Sonic Rage - Benefiz für das Explosiv Graz",
+            "badge": "Festival",
+            "venue": "Explosiv, Graz",
+            "lineup": ["Morituri", "Psych", "Glitterpilots", "Back To Paradise"]
         },
         {
             "datetime": "2026-11-25",
