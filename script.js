@@ -426,7 +426,7 @@
         const paragraphs = [].concat(report || []).filter((text) => typeof text === 'string' && text.trim());
         if (!paragraphs.length) return;
         const section = el('section', 'event-report');
-        section.appendChild(el('h3', null, 'Kurzbericht'));
+        section.appendChild(el('h3', null, 'Bericht'));
         paragraphs.forEach((text) => section.appendChild(el('p', null, text)));
         holder.appendChild(section);
     };
