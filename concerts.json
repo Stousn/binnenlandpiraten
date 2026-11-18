@@ -477,9 +477,10 @@
         },
         {
             "datetime": "2026-11-14",
+            "id": "2026-11-14_sonic_rage",
             "dateDisplay": "14.11.2026",
             "type": "festival",
-           "title": "Sonic Rage - Benefiz für das Explosiv Graz",
+            "title": "Sonic Rage - Benefiz für das Explosiv Graz",
             "badge": "Festival",
             "venue": "Explosiv, Graz",
             "lineup": ["Morituri", "Psych", "Glitterpilots", "Back To Paradise"]
