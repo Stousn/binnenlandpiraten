@@ -3,7 +3,7 @@
 const SANTA_HAT_FORCE = null;
 
 // Schnee (automatisch 1.12. bis 31.01.)
-const SNOW_FORCE = null;
+const SNOW_FORCE = true;
 
 (function () {
     'use strict';
